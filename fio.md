@@ -1,11 +1,13 @@
 ## Results for fio-3.1:
 ```
+# random writes
 fio --filename=test --rw=write --ioengine=posixaio --direct=1 --blocksize=128K --size=4G --iodepth=32 --group_reporting --name=myjob
 
+# random reads
 fio --filename=test --rw=read --ioengine=posixaio --direct=1 --blocksize=128K --runtime=300 --iodepth=32 --group_reporting --name=myjob
 ```
 
-### aws ec2 micro - 990M
+## aws ec2 micro - 990M
 `df -h`
 ```
 Filesystem      Size  Used Avail Use% Mounted on
@@ -95,7 +97,7 @@ Disk stats (read/write):
   xvda: ios=32663/3, merge=0/1, ticks=65500/0, in_queue=65500, util=99.32%
 ```
 
-### gcloud micro - 585M
+## gcloud micro - 585M
 `df -h`
 ```
 Filesystem      Size  Used Avail Use% Mounted on
@@ -186,7 +188,7 @@ Disk stats (read/write):
 
 ```
 
-### vultr - 488M
+## vultr - 488M
 `df -h`
 ```
 Filesystem      Size  Used Avail Use% Mounted on
