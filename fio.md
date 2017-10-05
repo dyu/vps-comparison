@@ -1,4 +1,4 @@
-# fio results
+# fio results (all on ubuntu 16.04 x64)
 ```
 # random writes
 fio --filename=test --rw=write --ioengine=posixaio --direct=1 --blocksize=128K --size=4G --iodepth=32 --group_reporting --name=myjob
@@ -366,4 +366,25 @@ Run status group 0 (all jobs):
 
 Disk stats (read/write):
   sda: ios=32711/18, merge=0/27, ticks=3423/0, in_queue=3403, util=68.20%
+```
+
+## upcloud - 992M (/usr/bin/python missing, install via: apt-get install python)
+`df -h`
+```
+
+```
+
+*writes*
+```
+
+```
+
+*file-size*
+```
+
+```
+
+*reads*
+```
+
 ```
