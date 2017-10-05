@@ -10,6 +10,54 @@ fio --filename=test32K --rw=read --ioengine=posixaio --direct=1 --blocksize=32K 
 ## aws ec2 micro - 990M
 *writes*
 ```
+
+```
+
+*file-size*
+```
+
+```
+
+*reads*
+```
+
+```
+
+## gcloud micro - 585M
+*writes*
+```
+
+```
+
+*file-size*
+```
+
+```
+
+*reads*
+```
+
+```
+
+## vultr - 488M
+*writes*
+```
+
+```
+
+*file-size*
+```
+
+```
+
+*reads*
+```
+
+```
+
+## linode - 989M
+*writes*
+```
 ./fio --filename=test32K --rw=write --ioengine=posixaio --direct=1 --blocksize=32K --size=4G --iodepth=32 --group_reporting --name=myjob
 myjob: (g=0): rw=write, bs=(R) 32.0KiB-32.0KiB, (W) 32.0KiB-32.0KiB, (T) 32.0KiB-32.0KiB, ioengine=posixaio, iodepth=32
 fio-3.1
@@ -83,54 +131,6 @@ Run status group 0 (all jobs):
 
 Disk stats (read/write):
   sda: ios=130741/0, merge=0/0, ticks=10260/0, in_queue=10213, util=65.97%
-```
-
-## gcloud micro - 585M
-*writes*
-```
-
-```
-
-*file-size*
-```
-
-```
-
-*reads*
-```
-
-```
-
-## vultr - 488M
-*writes*
-```
-
-```
-
-*file-size*
-```
-
-```
-
-*reads*
-```
-
-```
-
-## linode - 989M
-*writes*
-```
-
-```
-
-*file-size*
-```
-
-```
-
-*reads*
-```
-
 ```
 
 ## upcloud - 992M (/usr/bin/python missing, install via: apt-get install python)
