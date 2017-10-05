@@ -203,15 +203,77 @@ tmpfs            49M     0   49M   0% /run/user/901
 
 *writes*
 ```
+./fio --filename=test --rw=write --ioengine=posixaio --direct=1 --blocksize=128K --size=4G --iodepth=32 --group_reporting --name=myjob
+myjob: (g=0): rw=write, bs=(R) 128KiB-128KiB, (W) 128KiB-128KiB, (T) 128KiB-128KiB, ioengine=posixaio, iodepth=32
+fio-3.1
+Starting 1 process
+myjob: Laying out IO file (1 file / 4096MiB)
+Jobs: 1 (f=1): [W(1)][100.0%][r=0KiB/s,w=236MiB/s][r=0,w=1886 IOPS][eta 00m:00s]
+myjob: (groupid=0, jobs=1): err= 0: pid=10508: Thu Oct  5 15:59:11 2017
+  write: IOPS=1812, BW=227MiB/s (238MB/s)(4096MiB/18081msec)
+    slat (usec): min=3, max=1932, avg=10.99, stdev=16.08
+    clat (usec): min=13105, max=40006, avg=17512.41, stdev=1629.50
+     lat (usec): min=13114, max=40016, avg=17523.40, stdev=1629.99
+    clat percentiles (usec):
+     |  1.00th=[15008],  5.00th=[15664], 10.00th=[15926], 20.00th=[16450],
+     | 30.00th=[16909], 40.00th=[17171], 50.00th=[17433], 60.00th=[17695],
+     | 70.00th=[17957], 80.00th=[18482], 90.00th=[19006], 95.00th=[19792],
+     | 99.00th=[22414], 99.50th=[25297], 99.90th=[38536], 99.95th=[39060],
+     | 99.99th=[40109]
+   bw (  KiB/s): min=212992, max=245760, per=100.00%, avg=232097.22, stdev=9763.83, samples=36
+   iops        : min= 1664, max= 1920, avg=1813.22, stdev=76.31, samples=36
+  lat (msec)   : 20=96.65%, 50=3.35%
+  cpu          : usr=3.01%, sys=0.35%, ctx=16385, majf=0, minf=16
+  IO depths    : 1=0.1%, 2=0.1%, 4=0.1%, 8=25.0%, 16=50.0%, 32=25.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=97.5%, 8=0.1%, 16=0.0%, 32=2.5%, 64=0.0%, >=64=0.0%
+     issued rwt: total=0,32768,0, short=0,0,0, dropped=0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=32
 
+Run status group 0 (all jobs):
+  WRITE: bw=227MiB/s (238MB/s), 227MiB/s-227MiB/s (238MB/s-238MB/s), io=4096MiB (4295MB), run=18081-18081msec
+
+Disk stats (read/write):
+  vda: ios=57/32444, merge=0/99, ticks=64/15864, in_queue=15900, util=88.10%
 ```
 
 *file-size*
 ```
-
+ls -al test 
+-rw-r--r-- 1 deploy deploy 4294967296 Oct  5 15:59 test
 ```
 
 *reads*
 ```
+./fio --filename=test --rw=read --ioengine=posixaio --direct=1 --blocksize=128K --runtime=300 --iodepth=32 --group_reporting --name=myjob
+myjob: (g=0): rw=read, bs=(R) 128KiB-128KiB, (W) 128KiB-128KiB, (T) 128KiB-128KiB, ioengine=posixaio, iodepth=32
+fio-3.1
+Starting 1 process
+Jobs: 1 (f=1): [R(1)][100.0%][r=144MiB/s,w=0KiB/s][r=1153,w=0 IOPS][eta 00m:00s]
+myjob: (groupid=0, jobs=1): err= 0: pid=10521: Thu Oct  5 15:59:51 2017
+   read: IOPS=1385, BW=173MiB/s (182MB/s)(4096MiB/23643msec)
+    slat (nsec): min=215, max=155656, avg=1087.56, stdev=3154.19
+    clat (usec): min=15226, max=45777, avg=23043.36, stdev=4443.57
+     lat (usec): min=15227, max=45779, avg=23044.44, stdev=4443.63
+    clat percentiles (usec):
+     |  1.00th=[16188],  5.00th=[17171], 10.00th=[17957], 20.00th=[19268],
+     | 30.00th=[20055], 40.00th=[21365], 50.00th=[22414], 60.00th=[23462],
+     | 70.00th=[24773], 80.00th=[26608], 90.00th=[29230], 95.00th=[31065],
+     | 99.00th=[36963], 99.50th=[38011], 99.90th=[42206], 99.95th=[42206],
+     | 99.99th=[44303]
+   bw (  KiB/s): min=131072, max=212992, per=100.00%, avg=177617.55, stdev=16766.76, samples=47
+   iops        : min= 1024, max= 1664, avg=1387.62, stdev=130.98, samples=47
+  lat (msec)   : 20=28.28%, 50=71.72%
+  cpu          : usr=0.96%, sys=0.24%, ctx=16391, majf=0, minf=17
+  IO depths    : 1=0.1%, 2=0.1%, 4=0.1%, 8=25.0%, 16=50.0%, 32=25.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=97.5%, 8=0.1%, 16=0.0%, 32=2.5%, 64=0.0%, >=64=0.0%
+     issued rwt: total=32768,0,0, short=0,0,0, dropped=0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=32
 
+Run status group 0 (all jobs):
+   READ: bw=173MiB/s (182MB/s), 173MiB/s-173MiB/s (182MB/s-182MB/s), io=4096MiB (4295MB), run=23643-23643msec
+
+Disk stats (read/write):
+  vda: ios=32562/6, merge=0/10, ticks=21464/0, in_queue=21440, util=91.25%
 ```
