@@ -1,9 +1,9 @@
 # fio results (all on ubuntu 16.04 x64)
 ```
-# random writes
+# sequential writes
 fio --filename=test32K --rw=write --ioengine=posixaio --direct=1 --blocksize=32K --size=4G --iodepth=32 --group_reporting --name=myjob
 
-# random reads
+# sequential reads
 fio --filename=test32K --rw=read --ioengine=posixaio --direct=1 --blocksize=32K --runtime=300 --iodepth=32 --group_reporting --name=myjob
 ```
 
