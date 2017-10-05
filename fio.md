@@ -5,7 +5,7 @@ fio --filename=test --rw=write --ioengine=posixaio --direct=1 --blocksize=128K -
 fio --filename=test --rw=read --ioengine=posixaio --direct=1 --blocksize=128K --runtime=300 --iodepth=32 --group_reporting --name=myjob
 ```
 
-### amazon micro - 990M
+### aws ec2 micro - 990M
 `df -h`
 ```
 Filesystem      Size  Used Avail Use% Mounted on
@@ -107,12 +107,82 @@ tmpfs           5.0M     0  5.0M   0% /run/lock
 tmpfs           294M     0  294M   0% /sys/fs/cgroup
 tmpfs            59M     0   59M   0% /run/user/901
 ```
+
 *writes*
 ```
+./fio --filename=test --rw=write --ioengine=posixaio --direct=1 --blocksize=128K --size=4G --iodepth=32 --group_reporting --name=myjob
+myjob: (g=0): rw=write, bs=(R) 128KiB-128KiB, (W) 128KiB-128KiB, (T) 128KiB-128KiB, ioengine=posixaio, iodepth=32
+fio-3.1
+Starting 1 process
+myjob: Laying out IO file (1 file / 4096MiB)
+Jobs: 1 (f=1): [W(1)][100.0%][r=0KiB/s,w=36.0MiB/s][r=0,w=288 IOPS][eta 00m:00s]
+myjob: (groupid=0, jobs=1): err= 0: pid=32745: Thu Oct  5 15:51:21 2017
+  write: IOPS=268, BW=33.6MiB/s (35.2MB/s)(4096MiB/121949msec)
+    slat (nsec): min=1854, max=263319, avg=11765.18, stdev=6318.78
+    clat (msec): min=55, max=401, avg=118.93, stdev=28.12
+     lat (msec): min=55, max=401, avg=118.95, stdev=28.12
+    clat percentiles (msec):
+     |  1.00th=[   69],  5.00th=[   86], 10.00th=[   95], 20.00th=[  106],
+     | 30.00th=[  110], 40.00th=[  112], 50.00th=[  113], 60.00th=[  115],
+     | 70.00th=[  120], 80.00th=[  130], 90.00th=[  148], 95.00th=[  171],
+     | 99.00th=[  232], 99.50th=[  251], 99.90th=[  338], 99.95th=[  401],
+     | 99.99th=[  401]
+   bw (  KiB/s): min= 8192, max=41042, per=99.98%, avg=34386.79, stdev=5944.50, samples=243
+   iops        : min=   64, max=  320, avg=268.63, stdev=46.44, samples=243
+  lat (msec)   : 100=13.65%, 250=85.85%, 500=0.50%
+  cpu          : usr=0.51%, sys=0.04%, ctx=16399, majf=0, minf=19
+  IO depths    : 1=0.1%, 2=0.1%, 4=0.1%, 8=25.0%, 16=50.0%, 32=25.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=97.5%, 8=0.1%, 16=0.0%, 32=2.5%, 64=0.0%, >=64=0.0%
+     issued rwt: total=0,32768,0, short=0,0,0, dropped=0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=32
 
+Run status group 0 (all jobs):
+  WRITE: bw=33.6MiB/s (35.2MB/s), 33.6MiB/s-33.6MiB/s (35.2MB/s-35.2MB/s), io=4096MiB (4295MB), run=121949-121949msec
+
+Disk stats (read/write):
+  sda: ios=211/32839, merge=0/140, ticks=1984/117704, in_queue=119620, util=96.40%
 ```
+
+*file-size*
+```
+ls -al test 
+-rw-r--r-- 1 deploy deploy 4294967296 Oct  5 15:51 test
+```
+
 *reads*
 ```
+./fio --filename=test --rw=read --ioengine=posixaio --direct=1 --blocksize=128K --runtime=300 --iodepth=32 --group_reporting --name=myjob
+myjob: (g=0): rw=read, bs=(R) 128KiB-128KiB, (W) 128KiB-128KiB, (T) 128KiB-128KiB, ioengine=posixaio, iodepth=32
+fio-3.1
+Starting 1 process
+Jobs: 1 (f=1): [R(1)][100.0%][r=56.1MiB/s,w=0KiB/s][r=448,w=0 IOPS][eta 00m:00s]
+myjob: (groupid=0, jobs=1): err= 0: pid=32761: Thu Oct  5 15:53:40 2017
+   read: IOPS=459, BW=57.5MiB/s (60.3MB/s)(4096MiB/71243msec)
+    slat (nsec): min=104, max=568317, avg=632.68, stdev=3484.29
+    clat (msec): min=20, max=259, avg=69.55, stdev=22.71
+     lat (msec): min=20, max=259, avg=69.55, stdev=22.71
+    clat percentiles (msec):
+     |  1.00th=[   32],  5.00th=[   40], 10.00th=[   45], 20.00th=[   52],
+     | 30.00th=[   56], 40.00th=[   62], 50.00th=[   67], 60.00th=[   71],
+     | 70.00th=[   79], 80.00th=[   87], 90.00th=[  100], 95.00th=[  112],
+     | 99.00th=[  138], 99.50th=[  155], 99.90th=[  171], 99.95th=[  226],
+     | 99.99th=[  232]
+   bw (  KiB/s): min=24064, max=74496, per=100.00%, avg=58900.82, stdev=8283.46, samples=142
+   iops        : min=  188, max=  582, avg=460.15, stdev=64.72, samples=142
+  lat (msec)   : 50=18.72%, 100=71.75%, 250=9.52%, 500=0.01%
+  cpu          : usr=0.19%, sys=0.05%, ctx=16392, majf=0, minf=17
+  IO depths    : 1=0.1%, 2=0.1%, 4=0.1%, 8=25.0%, 16=50.0%, 32=25.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=97.5%, 8=0.1%, 16=0.0%, 32=2.5%, 64=0.0%, >=64=0.0%
+     issued rwt: total=32768,0,0, short=0,0,0, dropped=0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=32
+
+Run status group 0 (all jobs):
+   READ: bw=57.5MiB/s (60.3MB/s), 57.5MiB/s-57.5MiB/s (60.3MB/s-60.3MB/s), io=4096MiB (4295MB), run=71243-71243msec
+
+Disk stats (read/write):
+  sda: ios=32715/18, merge=0/18, ticks=69880/164, in_queue=70028, util=98.12%
 
 ```
 
@@ -128,10 +198,17 @@ tmpfs           5.0M     0  5.0M   0% /run/lock
 tmpfs           245M     0  245M   0% /sys/fs/cgroup
 tmpfs            49M     0   49M   0% /run/user/901
 ```
+
 *writes*
 ```
 
 ```
+
+*file-size*
+```
+
+```
+
 *reads*
 ```
 
