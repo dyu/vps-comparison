@@ -10,17 +10,79 @@ fio --filename=test32K --rw=read --ioengine=posixaio --direct=1 --blocksize=32K 
 ## aws ec2 micro - 990M
 *writes*
 ```
+./fio --filename=test32K --rw=write --ioengine=posixaio --direct=1 --blocksize=32K --size=4G --iodepth=32 --group_reporting --name=myjob
+myjob: (g=0): rw=write, bs=(R) 32.0KiB-32.0KiB, (W) 32.0KiB-32.0KiB, (T) 32.0KiB-32.0KiB, ioengine=posixaio, iodepth=32
+fio-3.1
+Starting 1 process
+myjob: Laying out IO file (1 file / 4096MiB)
+Jobs: 1 (f=1): [W(1)][100.0%][r=0KiB/s,w=215MiB/s][r=0,w=6880 IOPS][eta 00m:00s]
+myjob: (groupid=0, jobs=1): err= 0: pid=4882: Thu Oct  5 17:59:34 2017
+  write: IOPS=8059, BW=252MiB/s (264MB/s)(4096MiB/16263msec)
+    slat (nsec): min=504, max=167920, avg=1904.25, stdev=1111.63
+    clat (usec): min=2620, max=17631, avg=3940.39, stdev=691.07
+     lat (usec): min=2621, max=17633, avg=3942.29, stdev=691.23
+    clat percentiles (usec):
+     |  1.00th=[ 2900],  5.00th=[ 3097], 10.00th=[ 3228], 20.00th=[ 3458],
+     | 30.00th=[ 3589], 40.00th=[ 3720], 50.00th=[ 3884], 60.00th=[ 4015],
+     | 70.00th=[ 4178], 80.00th=[ 4359], 90.00th=[ 4686], 95.00th=[ 5014],
+     | 99.00th=[ 5735], 99.50th=[ 6128], 99.90th=[ 9503], 99.95th=[15795],
+     | 99.99th=[17695]
+   bw (  KiB/s): min=206848, max=290816, per=99.88%, avg=257586.56, stdev=19917.11, samples=32
+   iops        : min= 6464, max= 9088, avg=8049.56, stdev=622.45, samples=32
+  lat (msec)   : 4=59.83%, 10=40.10%, 20=0.07%
+  cpu          : usr=3.46%, sys=1.35%, ctx=65553, majf=0, minf=19
+  IO depths    : 1=0.1%, 2=0.1%, 4=0.1%, 8=25.0%, 16=50.0%, 32=25.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=97.5%, 8=0.1%, 16=0.0%, 32=2.5%, 64=0.0%, >=64=0.0%
+     issued rwt: total=0,131072,0, short=0,0,0, dropped=0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=32
 
+Run status group 0 (all jobs):
+  WRITE: bw=252MiB/s (264MB/s), 252MiB/s-252MiB/s (264MB/s-264MB/s), io=4096MiB (4295MB), run=16263-16263msec
+
+Disk stats (read/write):
+  sda: ios=0/129333, merge=0/44, ticks=0/11250, in_queue=12447, util=66.73%
 ```
 
 *file-size*
 ```
-
+ls -al test32K 
+-rw-r--r-- 1 deploy deploy 4294967296 Oct  5 17:59 test32K
 ```
 
 *reads*
 ```
+./fio --filename=test32K --rw=read --ioengine=posixaio --direct=1 --blocksize=32K --runtime=300 --iodepth=32 --group_reporting --name=myjob
+myjob: (g=0): rw=read, bs=(R) 32.0KiB-32.0KiB, (W) 32.0KiB-32.0KiB, (T) 32.0KiB-32.0KiB, ioengine=posixaio, iodepth=32
+fio-3.1
+Starting 1 process
+Jobs: 1 (f=1): [R(1)][100.0%][r=276MiB/s,w=0KiB/s][r=8834,w=0 IOPS][eta 00m:00s]
+myjob: (groupid=0, jobs=1): err= 0: pid=4889: Thu Oct  5 18:00:01 2017
+   read: IOPS=8493, BW=265MiB/s (278MB/s)(4096MiB/15432msec)
+    slat (nsec): min=200, max=133366, avg=548.97, stdev=798.15
+    clat (usec): min=2590, max=11171, avg=3752.32, stdev=574.39
+     lat (usec): min=2591, max=11173, avg=3752.87, stdev=574.47
+    clat percentiles (usec):
+     |  1.00th=[ 2802],  5.00th=[ 2966], 10.00th=[ 3097], 20.00th=[ 3261],
+     | 30.00th=[ 3425], 40.00th=[ 3556], 50.00th=[ 3687], 60.00th=[ 3851],
+     | 70.00th=[ 4015], 80.00th=[ 4178], 90.00th=[ 4424], 95.00th=[ 4686],
+     | 99.00th=[ 5342], 99.50th=[ 5866], 99.90th=[ 7373], 99.95th=[ 8848],
+     | 99.99th=[11076]
+   bw (  KiB/s): min=219575, max=310848, per=99.62%, avg=270760.23, stdev=23261.85, samples=30
+   iops        : min= 6861, max= 9714, avg=8461.23, stdev=726.99, samples=30
+  lat (msec)   : 4=69.61%, 10=30.35%, 20=0.05%
+  cpu          : usr=2.46%, sys=1.16%, ctx=65548, majf=0, minf=21
+  IO depths    : 1=0.1%, 2=0.1%, 4=0.1%, 8=25.0%, 16=50.0%, 32=25.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=97.5%, 8=0.1%, 16=0.0%, 32=2.5%, 64=0.0%, >=64=0.0%
+     issued rwt: total=131072,0,0, short=0,0,0, dropped=0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=32
 
+Run status group 0 (all jobs):
+   READ: bw=265MiB/s (278MB/s), 265MiB/s-265MiB/s (278MB/s-278MB/s), io=4096MiB (4295MB), run=15432-15432msec
+
+Disk stats (read/write):
+  sda: ios=130741/0, merge=0/0, ticks=10260/0, in_queue=10213, util=65.97%
 ```
 
 ## gcloud micro - 585M
