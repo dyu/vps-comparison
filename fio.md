@@ -1,4 +1,4 @@
-## Results for fio-3.1:
+# fio results
 ```
 # random writes
 fio --filename=test --rw=write --ioengine=posixaio --direct=1 --blocksize=128K --size=4G --iodepth=32 --group_reporting --name=myjob
