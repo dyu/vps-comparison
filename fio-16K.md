@@ -42,17 +42,79 @@ fio --filename=test16K --rw=read --ioengine=posixaio --direct=1 --blocksize=16K 
 ## vultr - 488M
 *writes*
 ```
+./fio --filename=test16K --rw=write --ioengine=posixaio --direct=1 --blocksize=16K --size=4G --iodepth=32 --group_reporting --name=myjob
+myjob: (g=0): rw=write, bs=(R) 16.0KiB-16.0KiB, (W) 16.0KiB-16.0KiB, (T) 16.0KiB-16.0KiB, ioengine=posixaio, iodepth=32
+fio-3.1
+Starting 1 process
+myjob: Laying out IO file (1 file / 4096MiB)
+Jobs: 1 (f=1): [W(1)][100.0%][r=0KiB/s,w=92.0MiB/s][r=0,w=5888 IOPS][eta 00m:00s]
+myjob: (groupid=0, jobs=1): err= 0: pid=11511: Thu Oct  5 18:23:16 2017
+  write: IOPS=5980, BW=93.4MiB/s (97.0MB/s)(4096MiB/43832msec)
+    slat (nsec): min=339, max=1128.7k, avg=1519.35, stdev=3280.99
+    clat (usec): min=3660, max=25559, avg=5318.66, stdev=876.90
+     lat (usec): min=3661, max=25560, avg=5320.18, stdev=877.04
+    clat percentiles (usec):
+     |  1.00th=[ 4113],  5.00th=[ 4359], 10.00th=[ 4490], 20.00th=[ 4686],
+     | 30.00th=[ 4883], 40.00th=[ 5014], 50.00th=[ 5211], 60.00th=[ 5342],
+     | 70.00th=[ 5538], 80.00th=[ 5800], 90.00th=[ 6194], 95.00th=[ 6587],
+     | 99.00th=[ 7963], 99.50th=[ 8979], 99.90th=[13173], 99.95th=[15139],
+     | 99.99th=[25297]
+   bw (  KiB/s): min=78909, max=114688, per=99.99%, avg=95683.14, stdev=7718.88, samples=87
+   iops        : min= 4931, max= 7168, avg=5980.18, stdev=482.45, samples=87
+  lat (msec)   : 4=0.37%, 10=99.30%, 20=0.30%, 50=0.03%
+  cpu          : usr=2.58%, sys=0.97%, ctx=131105, majf=0, minf=17
+  IO depths    : 1=0.1%, 2=0.1%, 4=0.1%, 8=25.0%, 16=50.0%, 32=25.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=97.5%, 8=0.1%, 16=0.0%, 32=2.5%, 64=0.0%, >=64=0.0%
+     issued rwt: total=0,262144,0, short=0,0,0, dropped=0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=32
 
+Run status group 0 (all jobs):
+  WRITE: bw=93.4MiB/s (97.0MB/s), 93.4MiB/s-93.4MiB/s (97.0MB/s-97.0MB/s), io=4096MiB (4295MB), run=43832-43832msec
+
+Disk stats (read/write):
+  vda: ios=0/260985, merge=0/124, ticks=0/36456, in_queue=36392, util=83.25%
 ```
 
 *file-size*
 ```
-
+ls -al test16K 
+-rw-r--r-- 1 deploy deploy 4294967296 Oct  5 18:23 test16K
 ```
 
 *reads*
 ```
+./fio --filename=test16K --rw=read --ioengine=posixaio --direct=1 --blocksize=16K --runtime=300 --iodepth=32 --group_reporting --name=myjob
+myjob: (g=0): rw=read, bs=(R) 16.0KiB-16.0KiB, (W) 16.0KiB-16.0KiB, (T) 16.0KiB-16.0KiB, ioengine=posixaio, iodepth=32
+fio-3.1
+Starting 1 process
+Jobs: 1 (f=1): [R(1)][100.0%][r=108MiB/s,w=0KiB/s][r=6880,w=0 IOPS][eta 00m:00s]
+myjob: (groupid=0, jobs=1): err= 0: pid=11520: Thu Oct  5 18:25:07 2017
+   read: IOPS=7049, BW=110MiB/s (116MB/s)(4096MiB/37185msec)
+    slat (nsec): min=190, max=550847, avg=654.53, stdev=1417.55
+    clat (usec): min=2826, max=24898, avg=4516.75, stdev=1104.78
+     lat (usec): min=2826, max=24899, avg=4517.41, stdev=1104.84
+    clat percentiles (usec):
+     |  1.00th=[ 3195],  5.00th=[ 3490], 10.00th=[ 3654], 20.00th=[ 3851],
+     | 30.00th=[ 4015], 40.00th=[ 4146], 50.00th=[ 4293], 60.00th=[ 4424],
+     | 70.00th=[ 4621], 80.00th=[ 4883], 90.00th=[ 5407], 95.00th=[ 6325],
+     | 99.00th=[ 9503], 99.50th=[10421], 99.90th=[12649], 99.95th=[15795],
+     | 99.99th=[24773]
+   bw (  KiB/s): min=98304, max=134336, per=99.98%, avg=112772.77, stdev=6921.55, samples=74
+   iops        : min= 6144, max= 8396, avg=7048.28, stdev=432.61, samples=74
+  lat (msec)   : 4=29.60%, 10=69.72%, 20=0.67%, 50=0.01%
+  cpu          : usr=2.13%, sys=1.28%, ctx=131040, majf=0, minf=16
+  IO depths    : 1=0.1%, 2=0.1%, 4=0.1%, 8=25.0%, 16=50.0%, 32=25.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=97.5%, 8=0.1%, 16=0.0%, 32=2.5%, 64=0.0%, >=64=0.0%
+     issued rwt: total=262144,0,0, short=0,0,0, dropped=0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=32
 
+Run status group 0 (all jobs):
+   READ: bw=110MiB/s (116MB/s), 110MiB/s-110MiB/s (116MB/s-116MB/s), io=4096MiB (4295MB), run=37185-37185msec
+
+Disk stats (read/write):
+  vda: ios=261854/4, merge=0/3, ticks=32660/0, in_queue=32620, util=87.63%
 ```
 
 ## linode - 989M
