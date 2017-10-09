@@ -1,6 +1,7 @@
 # echo results (all vps run on ubuntu 16.04 x64)
 
 10M iterations
+- parses `{"1":123456789}` into a java object and then writes that java object back as json with the same number.
 
 ```
 ./run-uri.sh protostuffdb /todo/user/echoInt payload/echoInt.json
