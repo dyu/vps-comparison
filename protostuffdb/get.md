@@ -37,7 +37,10 @@ tmpfs           100M     0  100M   0% /run/user/901
 
 *leveldb*
 ```
-
+./run-uri.sh protostuffdb /todo/user/Todo/list payload/get.json
+protostuffdb
+jni rpc: 93 ms | total: 173 ms
+elapsed ms: 48,141 | ops/sec: 207,723 | response body bytes: 80
 ```
 
 *hyperleveldb*
@@ -60,7 +63,10 @@ tmpfs            59M     0   59M   0% /run/user/901
 
 *leveldb*
 ```
-
+./run-uri.sh protostuffdb /todo/user/Todo/list payload/get.json
+protostuffdb
+jni rpc: 110 ms | total: 231 ms
+elapsed ms: 242,282 | ops/sec: 41,274 | response body bytes: 80
 ```
 
 *hyperleveldb*
@@ -83,7 +89,10 @@ tmpfs            49M     0   49M   0% /run/user/901
 
 *leveldb*
 ```
-
+./run-uri.sh protostuffdb /todo/user/Todo/list payload/get.json
+protostuffdb
+jni rpc: 231 ms | total: 414 ms
+elapsed ms: 59,473 | ops/sec: 168,141 | response body bytes: 80
 ```
 
 *hyperleveldb*
@@ -106,7 +115,10 @@ tmpfs            99M     0   99M   0% /run/user/901
 
 *leveldb*
 ```
-
+./run-uri.sh protostuffdb /todo/user/Todo/list payload/get.json
+protostuffdb
+jni rpc: 135 ms | total: 252 ms
+elapsed ms: 67,610 | ops/sec: 147,906 | response body bytes: 80
 ```
 
 *hyperleveldb*
@@ -129,7 +141,10 @@ tmpfs           100M     0  100M   0% /run/user/901
 
 *leveldb*
 ```
-
+./run-uri.sh protostuffdb /todo/user/Todo/list payload/get.json
+protostuffdb
+jni rpc: 79 ms | total: 147 ms
+elapsed ms: 42,744 | ops/sec: 233,946 | response body bytes: 80
 ```
 
 *hyperleveldb*
