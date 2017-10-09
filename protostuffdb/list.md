@@ -1,7 +1,7 @@
 # list results (all vps run on ubuntu 16.04 x64)
 
 1M iterations
-- 30 entries fetched per iteration
+- 30 entries fetched per iteration (reverse scan, latest first)
 
 *leveldb*
 ```
@@ -38,7 +38,10 @@ tmpfs           100M     0  100M   0% /run/user/901
 
 *leveldb*
 ```
-
+./run-uri.sh protostuffdb /todo/user/Todo/list payload/list.json 1000000
+protostuffdb
+jni rpc: 35 ms | total: 117 ms
+elapsed ms: 36,906 | ops/sec: 27,095 | response body bytes: 2,052
 ```
 
 *hyperleveldb*
@@ -61,7 +64,10 @@ tmpfs            59M     0   59M   0% /run/user/901
 
 *leveldb*
 ```
-
+./run-uri.sh protostuffdb /todo/user/Todo/list payload/list.json 1000000
+protostuffdb
+jni rpc: 71 ms | total: 176 ms
+elapsed ms: 77,841 | ops/sec: 12,846 | response body bytes: 2,052
 ```
 
 *hyperleveldb*
@@ -84,7 +90,10 @@ tmpfs            49M     0   49M   0% /run/user/901
 
 *leveldb*
 ```
-
+./run-uri.sh protostuffdb /todo/user/Todo/list payload/list.json 1000000
+protostuffdb
+jni rpc: 71 ms | total: 275 ms
+elapsed ms: 48,032 | ops/sec: 20,819 | response body bytes: 2,052
 ```
 
 *hyperleveldb*
@@ -107,7 +116,10 @@ tmpfs            99M     0   99M   0% /run/user/901
 
 *leveldb*
 ```
-
+./run-uri.sh protostuffdb /todo/user/Todo/list payload/list.json 1000000
+protostuffdb
+jni rpc: 33 ms | total: 140 ms
+elapsed ms: 41,833 | ops/sec: 23,904 | response body bytes: 2,052
 ```
 
 *hyperleveldb*
@@ -130,7 +142,10 @@ tmpfs           100M     0  100M   0% /run/user/901
 
 *leveldb*
 ```
-
+./run-uri.sh protostuffdb /todo/user/Todo/list payload/list.json 1000000
+protostuffdb
+jni rpc: 35 ms | total: 101 ms
+elapsed ms: 29,315 | ops/sec: 34,111 | response body bytes: 2,052
 ```
 
 *hyperleveldb*
