@@ -1,7 +1,7 @@
 # insert results (all vps run on ubuntu 16.04 x64)
 
 10M iterations
-- a single iteration inserts 1 primary key and 1 secondary key
+- a single iteration inserts 1 primary key and 1 secondary key (~159MB on disk)
 
 *leveldb*
 ```
