@@ -2,6 +2,7 @@
 
 10M iterations
 - parses `{"1":123456789}` into a java object and then writes that java object back as json with the same number.
+- measures json perf, as well as the jvm's gc perf
 
 ```
 ./run-uri.sh protostuffdb /todo/user/echoInt payload/echoInt.json

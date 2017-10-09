@@ -1,7 +1,8 @@
 ### leveldb ops/sec summary on ubuntu 16.04 x64
 
+All operations include overhead of parsing/generating json from/to java objects.
 ```
-E = echo @ 10M iterations
+E = echo @ 10M iterations (measures json perf, as well as the jvm's gc perf)
 C = create @ 10M iterations
 G = get @ 10M iterations
 L = list @ 1M iterations
