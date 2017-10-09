@@ -1,6 +1,7 @@
 # get results (all vps run on ubuntu 16.04 x64)
 
 10M iterations
+- no disk seeks (same key used per iteration, the sst will be cached by the filesystem)
 
 *leveldb*
 ```
