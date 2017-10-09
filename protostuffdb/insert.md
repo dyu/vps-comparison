@@ -15,14 +15,6 @@
 
 ## local machine - 15945M (Intel i7 3630qm 2.4 ghz with turboboost to 3.4 ghz)
 
-*leveldb*
-```
-./run-uri.sh protostuffdb /todo/user/Todo/create payload/create.json
-protostuffdb
-jni rpc: 196 ms | total: 248 ms
-elapsed ms: 114,038 | ops/sec: 87,689 | response body bytes: 80
-```
-
 *files*
 ```
 ls -alh target/data/main/user
@@ -125,6 +117,22 @@ drwxrwxr-x 2 dyu dyu  4.0K Oct  9 19:20 backup-live
 -rw-r--r-- 1 dyu dyu     0 Oct  9 19:20 LOCK
 -rw-rw-r-- 1 dyu dyu  149K Oct  9 19:22 LOG
 -rw-rw-r-- 1 dyu dyu   43K Oct  9 19:22 MANIFEST-000002
+```
+
+*leveldb*
+```
+./run-uri.sh protostuffdb /todo/user/Todo/create payload/create.json
+protostuffdb
+jni rpc: 196 ms | total: 248 ms
+elapsed ms: 114,038 | ops/sec: 87,689 | response body bytes: 80
+```
+
+*hyperleveldb*
+```
+./run-uri.sh hprotostuffdb /todo/user/Todo/create payload/create.json
+hprotostuffdb
+jni rpc: 202 ms | total: 254 ms
+elapsed ms: 276,757 | ops/sec: 36,132 | response body bytes: 80
 ```
 
 ## aws ec2 micro - 990M
@@ -258,7 +266,10 @@ elapsed ms: 109,169 | ops/sec: 91,600 | response body bytes: 80
 
 *hyperleveldb*
 ```
-
+./run-uri.sh hprotostuffdb /todo/user/Todo/create payload/create.json
+hprotostuffdb
+jni rpc: 33 ms | total: 116 ms
+elapsed ms: 311,029 | ops/sec: 32,151 | response body bytes: 80
 ```
 
 ## gcloud micro - 585M
@@ -388,7 +399,10 @@ elapsed ms: 643,206 | ops/sec: 15,547 | response body bytes: 80
 
 *hyperleveldb*
 ```
-
+./run-uri.sh hprotostuffdb /todo/user/Todo/create payload/create.json
+hprotostuffdb
+jni rpc: 39 ms | total: 141 ms
+elapsed ms: 1,803,829 | ops/sec: 5,543 | response body bytes: 80
 ```
 
 ## vultr - 488M
@@ -517,7 +531,10 @@ elapsed ms: 156,043 | ops/sec: 64,084 | response body bytes: 80
 
 *hyperleveldb*
 ```
-
+./run-uri.sh hprotostuffdb /todo/user/Todo/create payload/create.json
+hprotostuffdb
+jni rpc: 90 ms | total: 285 ms
+elapsed ms: 354,609 | ops/sec: 28,200 | response body bytes: 80
 ```
 
 ## linode - 989M
@@ -656,7 +673,10 @@ elapsed ms: 110,326 | ops/sec: 90,640 | response body bytes: 80
 
 *hyperleveldb*
 ```
-
+./run-uri.sh hprotostuffdb /todo/user/Todo/create payload/create.json
+hprotostuffdb
+jni rpc: 53 ms | total: 178 ms
+elapsed ms: 324,603 | ops/sec: 30,806 | response body bytes: 80
 ```
 
 ## upcloud - 992M (/usr/bin/python missing, install via: apt-get install python)
@@ -784,6 +804,9 @@ elapsed ms: 83,934 | ops/sec: 119,140 | response body bytes: 80
 
 *hyperleveldb*
 ```
-
+./run-uri.sh hprotostuffdb /todo/user/Todo/create payload/create.json
+hprotostuffdb
+jni rpc: 35 ms | total: 101 ms
+elapsed ms: 294,189 | ops/sec: 33,991 | response body bytes: 80
 ```
 
