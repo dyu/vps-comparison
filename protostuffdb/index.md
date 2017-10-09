@@ -3,13 +3,13 @@
 All operations include overhead of parsing/generating json from/to java objects.
 ```
 E = echo @ 10M iterations (measures json perf, as well as the jvm's gc perf)
-C = create @ 10M iterations
+I = insert @ 10M iterations
 G = get @ 10M iterations
 L = list @ 1M iterations
 ```
 
 ```
-                             E             C             G             L
+                             E             I             G             L
 
 aws ec2 micro - 990M         1,354,580     91,600        207,723       27,095
 
