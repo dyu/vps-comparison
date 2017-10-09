@@ -140,14 +140,6 @@ tmpfs           496M     0  496M   0% /sys/fs/cgroup
 tmpfs           100M     0  100M   0% /run/user/901
 ```
 
-*leveldb*
-```
-./run-uri.sh protostuffdb /todo/user/Todo/create payload/create.json
-protostuffdb
-jni rpc: 31 ms | total: 114 ms
-elapsed ms: 109,169 | ops/sec: 91,600 | response body bytes: 80
-```
-
 *files*
 ```
 ls -alh target/data/main/user/
@@ -256,6 +248,14 @@ drwxrwxr-x 2 deploy deploy 4.0K Oct  9 12:11 backup-live
 -rw-rw-r-- 1 deploy deploy  61K Oct  9 13:09 MANIFEST-000007
 ```
 
+*leveldb*
+```
+./run-uri.sh protostuffdb /todo/user/Todo/create payload/create.json
+protostuffdb
+jni rpc: 31 ms | total: 114 ms
+elapsed ms: 109,169 | ops/sec: 91,600 | response body bytes: 80
+```
+
 *hyperleveldb*
 ```
 
@@ -272,14 +272,6 @@ tmpfs           294M     0  294M   0% /dev/shm
 tmpfs           5.0M     0  5.0M   0% /run/lock
 tmpfs           294M     0  294M   0% /sys/fs/cgroup
 tmpfs            59M     0   59M   0% /run/user/901
-```
-
-*leveldb*
-```
-./run-uri.sh protostuffdb /todo/user/Todo/create payload/create.json
-protostuffdb
-jni rpc: 60 ms | total: 158 ms
-elapsed ms: 643,206 | ops/sec: 15,547 | response body bytes: 80
 ```
 
 *files*
@@ -386,6 +378,14 @@ drwxrwxr-x 2 deploy deploy 4.0K Oct  9 13:04 backup-live
 -rw-rw-r-- 1 deploy deploy  62K Oct  9 13:18 MANIFEST-000004
 ```
 
+*leveldb*
+```
+./run-uri.sh protostuffdb /todo/user/Todo/create payload/create.json
+protostuffdb
+jni rpc: 60 ms | total: 158 ms
+elapsed ms: 643,206 | ops/sec: 15,547 | response body bytes: 80
+```
+
 *hyperleveldb*
 ```
 
@@ -402,14 +402,6 @@ tmpfs           245M     0  245M   0% /dev/shm
 tmpfs           5.0M     0  5.0M   0% /run/lock
 tmpfs           245M     0  245M   0% /sys/fs/cgroup
 tmpfs            49M     0   49M   0% /run/user/901
-```
-
-*leveldb*
-```
-./run-uri.sh protostuffdb /todo/user/Todo/create payload/create.json
-protostuffdb
-jni rpc: 83 ms | total: 281 ms
-elapsed ms: 156,043 | ops/sec: 64,084 | response body bytes: 80
 ```
 
 *files*
@@ -515,6 +507,14 @@ drwxrwxr-x 2 deploy deploy  4.0K Oct  9 13:04 backup-live
 -rw-rw-r-- 1 deploy deploy   61K Oct  9 13:10 MANIFEST-000004
 ```
 
+*leveldb*
+```
+./run-uri.sh protostuffdb /todo/user/Todo/create payload/create.json
+protostuffdb
+jni rpc: 83 ms | total: 281 ms
+elapsed ms: 156,043 | ops/sec: 64,084 | response body bytes: 80
+```
+
 *hyperleveldb*
 ```
 
@@ -531,14 +531,6 @@ tmpfs           495M  7.7M  488M   2% /run
 tmpfs           5.0M     0  5.0M   0% /run/lock
 tmpfs           495M     0  495M   0% /sys/fs/cgroup
 tmpfs            99M     0   99M   0% /run/user/901
-```
-
-*leveldb*
-```
-./run-uri.sh protostuffdb /todo/user/Todo/create payload/create.json
-protostuffdb
-jni rpc: 44 ms | total: 170 ms
-elapsed ms: 110,326 | ops/sec: 90,640 | response body bytes: 80
 ```
 
 *files*
@@ -654,6 +646,14 @@ drwxrwxr-x 2 deploy deploy 4.0K Oct  9 13:04 backup-live
 -rw-rw-r-- 1 deploy deploy  60K Oct  9 13:09 MANIFEST-000004
 ```
 
+*leveldb*
+```
+./run-uri.sh protostuffdb /todo/user/Todo/create payload/create.json
+protostuffdb
+jni rpc: 44 ms | total: 170 ms
+elapsed ms: 110,326 | ops/sec: 90,640 | response body bytes: 80
+```
+
 *hyperleveldb*
 ```
 
@@ -670,14 +670,6 @@ tmpfs           497M     0  497M   0% /dev/shm
 tmpfs           5.0M     0  5.0M   0% /run/lock
 tmpfs           497M     0  497M   0% /sys/fs/cgroup
 tmpfs           100M     0  100M   0% /run/user/901
-```
-
-*leveldb*
-```
-./run-uri.sh protostuffdb /todo/user/Todo/create payload/create.json
-protostuffdb
-jni rpc: 37 ms | total: 106 ms
-elapsed ms: 83,934 | ops/sec: 119,140 | response body bytes: 80
 ```
 
 *files*
@@ -780,6 +772,14 @@ drwxrwxr-x 3 deploy deploy 4.0K Oct  9 13:04 ..
 -rw-rw-r-- 1 deploy deploy   57 Oct  9 13:04 LOG.old
 -rw-rw-r-- 1 deploy deploy  61K Oct  9 13:09 MANIFEST-000004
 drwxrwxr-x 2 deploy deploy 4.0K Oct  9 13:04 backup-live
+```
+
+*leveldb*
+```
+./run-uri.sh protostuffdb /todo/user/Todo/create payload/create.json
+protostuffdb
+jni rpc: 37 ms | total: 106 ms
+elapsed ms: 83,934 | ops/sec: 119,140 | response body bytes: 80
 ```
 
 *hyperleveldb*
