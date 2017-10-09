@@ -2,10 +2,17 @@
 
 All operations include overhead of parsing/generating json from/to java objects.
 ```
-E = echo @ 10M iterations (measures json perf, as well as the jvm's gc perf)
+E = echo @ 10M iterations
+    measures json serialization perf, as well as the jvm's gc perf
+
 I = insert @ 10M iterations
+    159MB on disk, inserts 1 primary key and 1 secondary key per iteration
+
 G = get @ 10M iterations
+    no disk seeks, same key used per iteration, the sst will be cached by the filesystem
+
 L = list @ 1M iterations
+    30 entries fetched per iteration, reverse scan, latest first
 ```
 
 ```
