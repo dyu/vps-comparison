@@ -46,7 +46,10 @@ elapsed ms: 36,906 | ops/sec: 27,095 | response body bytes: 2,052
 
 *hyperleveldb*
 ```
-
+./run-uri.sh hprotostuffdb /todo/user/Todo/list payload/list.json 1000000
+hprotostuffdb
+jni rpc: 35 ms | total: 117 ms
+elapsed ms: 29,232 | ops/sec: 34,209 | response body bytes: 2,052
 ```
 
 ## gcloud micro - 585M
@@ -72,7 +75,10 @@ elapsed ms: 77,841 | ops/sec: 12,846 | response body bytes: 2,052
 
 *hyperleveldb*
 ```
-
+./run-uri.sh hprotostuffdb /todo/user/Todo/list payload/list.json 1000000
+hprotostuffdb
+jni rpc: 156 ms | total: 310 ms
+elapsed ms: 41,134 | ops/sec: 24,310 | response body bytes: 2,052
 ```
 
 ## vultr - 488M
@@ -98,7 +104,10 @@ elapsed ms: 48,032 | ops/sec: 20,819 | response body bytes: 2,052
 
 *hyperleveldb*
 ```
-
+./run-uri.sh hprotostuffdb /todo/user/Todo/list payload/list.json 1000000
+hprotostuffdb
+jni rpc: 85 ms | total: 289 ms
+elapsed ms: 40,995 | ops/sec: 24,392 | response body bytes: 2,052
 ```
 
 ## linode - 989M
@@ -124,7 +133,10 @@ elapsed ms: 41,833 | ops/sec: 23,904 | response body bytes: 2,052
 
 *hyperleveldb*
 ```
-
+./run-uri.sh hprotostuffdb /todo/user/Todo/list payload/list.json 1000000
+hprotostuffdb
+jni rpc: 45 ms | total: 158 ms
+elapsed ms: 32,098 | ops/sec: 31,153 | response body bytes: 2,052
 ```
 
 ## upcloud - 992M (/usr/bin/python missing, install via: apt-get install python)
@@ -150,6 +162,9 @@ elapsed ms: 29,315 | ops/sec: 34,111 | response body bytes: 2,052
 
 *hyperleveldb*
 ```
-
+./run-uri.sh hprotostuffdb /todo/user/Todo/list payload/list.json 1000000
+hprotostuffdb
+jni rpc: 34 ms | total: 97 ms
+elapsed ms: 25,720 | ops/sec: 38,879 | response body bytes: 2,052
 ```
 
