@@ -1,4 +1,4 @@
-# hyperleveldb results (all vps run on ubuntu 16.04 x64)
+# hyperleveldb (with log for replication) results (all vps run on ubuntu 16.04 x64)
 
 **create** @ 5M iterations (a single iteration inserts 1 primary key and 1 secondary key)
 ```
