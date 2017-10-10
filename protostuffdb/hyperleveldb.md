@@ -104,17 +104,32 @@ tmpfs            59M     0   59M   0% /run/user/901
 
 **create**
 ```
+./run-uri.sh hprotostuffdb /todo/user/Todo/create payload/create.json
+hprotostuffdb
+jni rpc: 106 ms | total: 200 ms
+elapsed ms: 730,995 | ops/sec: 13,679 | response body bytes: 80
 
+du -sh target/data/main/user
+163M	target/data/main/user
 ```
 
 **get**
 ```
-
+./run-uri.sh hprotostuffdb /todo/user/Todo/list payload/get.json
+hprotostuffdb
+jni rpc: 181 ms | total: 377 ms
+elapsed ms: 227,580 | ops/sec: 43,940 | response body bytes: 80
 ```
 
 **list**
 ```
+./run-uri.sh hprotostuffdb /todo/user/Todo/list payload/list.json 1000000
+hprotostuffdb
+jni rpc: 105 ms | total: 217 ms
+elapsed ms: 136,017 | ops/sec: 7,351 | response body bytes: 2,052
 
+du -sh target/data/main/user
+176M	target/data/main/user
 ```
 
 ## vultr - 488M
