@@ -64,17 +64,35 @@ tmpfs           100M     0  100M   0% /run/user/901
 
 **create**
 ```
+./run-uri.sh hprotostuffdb-rmaster /todo/user/Todo/create payload/create.json 5000000
+hprotostuffdb-rmaster
+jni rpc: 50 ms | total: 131 ms
+elapsed ms: 85,065 | ops/sec: 58,778 | response body bytes: 80
 
+du -sh target/data/main/user
+691M	target/data/main/user
+
+ls -alh target/data/main/user/binlogs/rep.log 
+-rw-rw-r-- 1 deploy deploy 445M Oct 10 11:16 target/data/main/user/binlogs/rep.log
 ```
 
 **get**
 ```
-
+./run-uri.sh hprotostuffdb-rmaster /todo/user/Todo/list payload/get.json
+hprotostuffdb-rmaster
+jni rpc: 124 ms | total: 284 ms
+elapsed ms: 69,954 | ops/sec: 142,950 | response body bytes: 80
 ```
 
 **list**
 ```
+./run-uri.sh hprotostuffdb-rmaster /todo/user/Todo/list payload/list.json 1000000
+hprotostuffdb-rmaster
+jni rpc: 48 ms | total: 133 ms
+elapsed ms: 29,532 | ops/sec: 33,860 | response body bytes: 2,052
 
+du -sh target/data/main/user
+583M	target/data/main/user
 ```
 
 ## gcloud micro - 585M
@@ -92,7 +110,16 @@ tmpfs            59M     0   59M   0% /run/user/901
 
 **create**
 ```
+./run-uri.sh hprotostuffdb-rmaster /todo/user/Todo/create payload/create.json 5000000
+hprotostuffdb-rmaster
+jni rpc: 49 ms | total: 165 ms
+elapsed ms: 517,198 | ops/sec: 9,667 | response body bytes: 80
 
+du -sh target/data/main/user
+611M	target/data/main/user
+
+ls -alh target/data/main/user/binlogs/rep.log 
+-rw-rw-r-- 1 deploy deploy 445M Oct 10 11:31 target/data/main/user/binlogs/rep.log
 ```
 
 **get**
@@ -120,17 +147,35 @@ tmpfs            49M     0   49M   0% /run/user/901
 
 **create**
 ```
+./run-uri.sh hprotostuffdb-rmaster /todo/user/Todo/create payload/create.json 5000000
+hprotostuffdb-rmaster
+jni rpc: 71 ms | total: 183 ms
+elapsed ms: 109,952 | ops/sec: 45,474 | response body bytes: 80
 
+du -sh target/data/main/user
+628M	target/data/main/user
+
+ls -alh target/data/main/user/binlogs/rep.log 
+-rw-rw-r-- 1 deploy deploy 445M Oct 10 11:17 target/data/main/user/binlogs/rep.log
 ```
 
 **get**
 ```
-
+./run-uri.sh hprotostuffdb-rmaster /todo/user/Todo/list payload/get.json
+hprotostuffdb-rmaster
+jni rpc: 288 ms | total: 552 ms
+elapsed ms: 82,410 | ops/sec: 121,343 | response body bytes: 80
 ```
 
 **list**
 ```
+./run-uri.sh hprotostuffdb-rmaster /todo/user/Todo/list payload/list.json 1000000
+hprotostuffdb-rmaster
+jni rpc: 132 ms | total: 402 ms
+elapsed ms: 37,923 | ops/sec: 26,368 | response body bytes: 2,052
 
+du -sh target/data/main/user
+583M	target/data/main/user
 ```
 
 ## linode - 989M
@@ -148,17 +193,35 @@ tmpfs            99M     0   99M   0% /run/user/901
 
 **create**
 ```
+./run-uri.sh hprotostuffdb-rmaster /todo/user/Todo/create payload/create.json 5000000
+hprotostuffdb-rmaster
+jni rpc: 44 ms | total: 145 ms
+elapsed ms: 100,785 | ops/sec: 49,610 | response body bytes: 80
 
+du -sh target/data/main/user
+639M	target/data/main/user
+
+ls -alh target/data/main/user/binlogs/rep.log 
+-rw-rw-r-- 1 deploy deploy 445M Oct 10 11:17 target/data/main/user/binlogs/rep.log
 ```
 
 **get**
 ```
-
+./run-uri.sh hprotostuffdb-rmaster /todo/user/Todo/list payload/get.json
+hprotostuffdb-rmaster
+jni rpc: 134 ms | total: 243 ms
+elapsed ms: 73,509 | ops/sec: 136,037 | response body bytes: 80
 ```
 
 **list**
 ```
+./run-uri.sh hprotostuffdb-rmaster /todo/user/Todo/list payload/list.json 1000000
+hprotostuffdb-rmaster
+jni rpc: 58 ms | total: 190 ms
+elapsed ms: 32,442 | ops/sec: 30,823 | response body bytes: 2,052
 
+du -sh target/data/main/user
+583M	target/data/main/user
 ```
 
 ## upcloud - 992M (/usr/bin/python missing, install via: apt-get install python)
@@ -176,16 +239,34 @@ tmpfs           100M     0  100M   0% /run/user/901
 
 **create**
 ```
+./run-uri.sh hprotostuffdb-rmaster /todo/user/Todo/create payload/create.json 5000000
+hprotostuffdb-rmaster
+jni rpc: 38 ms | total: 107 ms
+elapsed ms: 84,948 | ops/sec: 58,859 | response body bytes: 80
 
+du -sh target/data/main/user
+596M	target/data/main/user
+
+ls -alh target/data/main/user/binlogs/rep.log 
+-rw-rw-r-- 1 deploy deploy 445M Oct 10 11:17 target/data/main/user/binlogs/rep.log
 ```
 
 **get**
 ```
-
+./run-uri.sh hprotostuffdb-rmaster /todo/user/Todo/list payload/get.json
+hprotostuffdb-rmaster
+jni rpc: 109 ms | total: 194 ms
+elapsed ms: 57,032 | ops/sec: 175,339 | response body bytes: 80
 ```
 
 **list**
 ```
+./run-uri.sh hprotostuffdb-rmaster /todo/user/Todo/list payload/list.json 1000000
+hprotostuffdb-rmaster
+jni rpc: 52 ms | total: 120 ms
+elapsed ms: 24,319 | ops/sec: 41,119 | response body bytes: 2,052
 
+du -sh target/data/main/user
+583M	target/data/main/user
 ```
 
