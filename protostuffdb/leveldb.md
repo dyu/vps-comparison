@@ -123,7 +123,13 @@ elapsed ms: 207,442 | ops/sec: 48,206 | response body bytes: 80
 
 **list**
 ```
+./run-uri.sh protostuffdb /todo/user/Todo/list payload/list.json 1000000
+protostuffdb
+jni rpc: 41 ms | total: 131 ms
+elapsed ms: 173,311 | ops/sec: 5,769 | response body bytes: 2,052
 
+du -sh target/data/main/user
+162M	target/data/main/user
 ```
 
 ## vultr - 488M
