@@ -61,17 +61,32 @@ tmpfs           100M     0  100M   0% /run/user/901
 
 **create**
 ```
+./run-uri.sh protostuffdb /todo/user/Todo/create payload/create.json
+protostuffdb
+jni rpc: 40 ms | total: 127 ms
+elapsed ms: 83,687 | ops/sec: 119,492 | response body bytes: 80
 
+du -sh target/data/main/user
+161M	target/data/main/user
 ```
 
 **get**
 ```
-
+./run-uri.sh protostuffdb /todo/user/Todo/list payload/get.json
+protostuffdb
+jni rpc: 78 ms | total: 158 ms
+elapsed ms: 47,144 | ops/sec: 212,111 | response body bytes: 80
 ```
 
 **list**
 ```
+./run-uri.sh protostuffdb /todo/user/Todo/list payload/list.json 1000000
+protostuffdb
+jni rpc: 36 ms | total: 114 ms
+elapsed ms: 37,101 | ops/sec: 26,952 | response body bytes: 2,052
 
+du -sh target/data/main/user
+163M	target/data/main/user
 ```
 
 ## gcloud micro - 585M
@@ -89,12 +104,21 @@ tmpfs            59M     0   59M   0% /run/user/901
 
 **create**
 ```
+./run-uri.sh protostuffdb /todo/user/Todo/create payload/create.json
+protostuffdb
+jni rpc: 38 ms | total: 137 ms
+elapsed ms: 515,822 | ops/sec: 19,386 | response body bytes: 80
 
+du -sh target/data/main/user
+161M	target/data/main/user
 ```
 
 **get**
 ```
-
+./run-uri.sh protostuffdb /todo/user/Todo/list payload/get.json
+protostuffdb
+jni rpc: 125 ms | total: 237 ms
+elapsed ms: 207,442 | ops/sec: 48,206 | response body bytes: 80
 ```
 
 **list**
@@ -117,17 +141,32 @@ tmpfs            49M     0   49M   0% /run/user/901
 
 **create**
 ```
+./run-uri.sh protostuffdb /todo/user/Todo/create payload/create.json
+protostuffdb
+jni rpc: 63 ms | total: 241 ms
+elapsed ms: 117,637 | ops/sec: 85,007 | response body bytes: 80
 
+du -sh target/data/main/user
+161M	target/data/main/user
 ```
 
 **get**
 ```
-
+./run-uri.sh protostuffdb /todo/user/Todo/list payload/get.json
+protostuffdb
+jni rpc: 170 ms | total: 369 ms
+elapsed ms: 64,667 | ops/sec: 154,638 | response body bytes: 80
 ```
 
 **list**
 ```
+./run-uri.sh protostuffdb /todo/user/Todo/list payload/list.json 1000000
+protostuffdb
+jni rpc: 85 ms | total: 277 ms
+elapsed ms: 46,606 | ops/sec: 21,456 | response body bytes: 2,052
 
+du -sh target/data/main/user
+164M	target/data/main/user
 ```
 
 ## linode - 989M
@@ -145,17 +184,32 @@ tmpfs            99M     0   99M   0% /run/user/901
 
 **create**
 ```
+./run-uri.sh protostuffdb /todo/user/Todo/create payload/create.json
+protostuffdb
+jni rpc: 39 ms | total: 138 ms
+elapsed ms: 95,647 | ops/sec: 104,550 | response body bytes: 80
 
+du -sh target/data/main/user
+161M	target/data/main/user
 ```
 
 **get**
 ```
-
+./run-uri.sh protostuffdb /todo/user/Todo/list payload/get.json
+protostuffdb
+jni rpc: 103 ms | total: 203 ms
+elapsed ms: 60,288 | ops/sec: 165,869 | response body bytes: 80
 ```
 
 **list**
 ```
+./run-uri.sh protostuffdb /todo/user/Todo/list payload/list.json 1000000
+protostuffdb
+jni rpc: 40 ms | total: 139 ms
+elapsed ms: 41,332 | ops/sec: 24,194 | response body bytes: 2,052
 
+du -sh target/data/main/user
+163M	target/data/main/user
 ```
 
 ## upcloud - 992M (/usr/bin/python missing, install via: apt-get install python)
@@ -173,16 +227,31 @@ tmpfs           100M     0  100M   0% /run/user/901
 
 **create**
 ```
+./run-uri.sh protostuffdb /todo/user/Todo/create payload/create.json
+protostuffdb
+jni rpc: 34 ms | total: 101 ms
+elapsed ms: 68,193 | ops/sec: 146,642 | response body bytes: 80
 
+du -sh target/data/main/user
+161M	target/data/main/user
 ```
 
 **get**
 ```
-
+./run-uri.sh protostuffdb /todo/user/Todo/list payload/get.json
+protostuffdb
+jni rpc: 68 ms | total: 140 ms
+elapsed ms: 41,920 | ops/sec: 238,544 | response body bytes: 80
 ```
 
 **list**
 ```
+./run-uri.sh protostuffdb /todo/user/Todo/list payload/list.json 1000000
+protostuffdb
+jni rpc: 35 ms | total: 100 ms
+elapsed ms: 29,485 | ops/sec: 33,914 | response body bytes: 2,052
 
+du -sh target/data/main/user
+163M	target/data/main/user
 ```
 
