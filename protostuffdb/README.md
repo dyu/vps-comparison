@@ -2,7 +2,7 @@
 ```sh
 mkdir -p tmp/tars/todo-linux-bench-x64
 
-# if your jvm resides in /usr/lib/jvm/java-7-oracle 
+# if the machine's jvm resides in /usr/lib/jvm/java-7-oracle 
 wget 'https://onedrive.live.com/download?cid=73A9A646B31A141F&resid=73A9A646B31A141F%21322&authkey=AMyHMazemCFOuHo' -O tmp/tars/todo-linux-bench-x64.tar.gz
 # else
 wget 'https://onedrive.live.com/download?cid=73A9A646B31A141F&resid=73A9A646B31A141F%21323&authkey=AJ3OmwrYkRV66k8' -O tmp/tars/todo-linux-bench-x64.tar.gz
