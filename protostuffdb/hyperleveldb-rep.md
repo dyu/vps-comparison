@@ -124,12 +124,21 @@ ls -alh target/data/main/user/binlogs/rep.log
 
 **get**
 ```
-
+./run-uri.sh hprotostuffdb-rmaster /todo/user/Todo/list payload/get.json
+hprotostuffdb-rmaster
+jni rpc: 250 ms | total: 414 ms
+elapsed ms: 346,220 | ops/sec: 28,883 | response body bytes: 80
 ```
 
 **list**
 ```
+./run-uri.sh hprotostuffdb-rmaster /todo/user/Todo/list payload/list.json 1000000
+hprotostuffdb-rmaster
+jni rpc: 197 ms | total: 641 ms
+elapsed ms: 52,662 | ops/sec: 18,988 | response body bytes: 2,052
 
+du -sh target/data/main/user
+583M	target/data/main/user
 ```
 
 ## vultr - 488M
