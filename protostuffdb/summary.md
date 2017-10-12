@@ -5,7 +5,7 @@ GJ = generate json @ 10M iterations
 
 PJ = parse json @ 10M iterations
 
-EJ = echo @ 10M iterations
+EJ = echo json @ 10M iterations
      json deser + ser
 
 ```
