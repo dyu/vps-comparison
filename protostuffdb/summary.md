@@ -53,6 +53,21 @@ linode        - 989M         104,550       165,869       24,194
 upcloud       - 992M         146,642       238,544       33,914
 ```
 
+## leveldb with replication log (5M iterations on I)
+```
+                             I             G             L
+
+aws ec2 micro - 990M         66,695        204,882       25,956
+
+gcloud micro  - 585M         10,693        33,150        4,504
+
+vultr         - 488M         51,353        171,654       21,710
+
+linode        - 989M         57,923        162,294       22,366
+
+upcloud       - 992M         71,251        252,838       31,932
+```
+
 ## hyperleveldb
 ```
                              I             G             L
