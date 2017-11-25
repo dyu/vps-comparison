@@ -175,3 +175,30 @@ jni rpc: 30 ms | total: 96 ms
 elapsed ms: 6,933 | ops/sec: 1,442,279 | response body bytes: 25
 ```
 
+## impactvps ovz - 1024M (/usr/bin/python missing, install via: apt-get install python)
+```
+./run-uri.sh protostuffdb /todo/user/generateInt /dev/null
+protostuffdb
+jni rpc: 28 ms | total: 105 ms
+elapsed ms: 4,565 | ops/sec: 2,190,427 | response body bytes: 20
+
+./run-uri.sh protostuffdb /todo/user/parseInt payload/echoInt.json
+protostuffdb
+jni rpc: 28 ms | total: 110 ms
+elapsed ms: 8,309 | ops/sec: 1,203,466 | response body bytes: 6
+
+./run-uri.sh protostuffdb /todo/user/echoInt payload/echoInt.json
+protostuffdb
+jni rpc: 28 ms | total: 107 ms
+elapsed ms: 9,289 | ops/sec: 1,076,456 | response body bytes: 20
+
+./run-uri.sh protostuffdb /todo/user/echoStr payload/echoStr.json
+protostuffdb
+jni rpc: 29 ms | total: 107 ms
+elapsed ms: 9,834 | ops/sec: 1,016,862 | response body bytes: 25
+
+./run-uri.sh protostuffdb /todo/user/echoKey payload/echoKey.json
+protostuffdb
+jni rpc: 31 ms | total: 115 ms
+elapsed ms: 10,663 | ops/sec: 937,750 | response body bytes: 25
+```
