@@ -53,6 +53,8 @@ vultr         - 488M         85,007        154,638       21,456
 linode        - 989M         104,550       165,869       24,194
 
 upcloud       - 992M         146,642       238,544       33,914
+
+impactvps ovz - 1024M        133,686       156,647       23,581
 ```
 
 ## leveldb with replication log (5M iterations on I)

@@ -261,3 +261,41 @@ du -sh target/data/main/user
 163M	target/data/main/user
 ```
 
+## impactvps ovz - 1024M (/usr/bin/python missing, install via: apt-get install python)
+`df -h`
+```
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/simfs       15G  1.1G   14G   7% /
+devtmpfs        512M     0  512M   0% /dev
+tmpfs           512M     0  512M   0% /dev/shm
+tmpfs           512M  6.7M  506M   2% /run
+tmpfs           5.0M     0  5.0M   0% /run/lock
+tmpfs           512M     0  512M   0% /sys/fs/cgroup
+tmpfs           103M     0  103M   0% /run/user/901
+```
+
+**create**
+```
+./run-uri.sh protostuffdb /todo/user/Todo/create payload/create.json
+protostuffdb
+jni rpc: 30 ms | total: 108 ms
+elapsed ms: 74,802 | ops/sec: 133,686 | response body bytes: 80
+deploy@iv1:~/tmp/tars/todo-linux-bench-x64/bench$ du -sh target/data/main/user
+161M	target/data/main/user
+```
+
+**get**
+```
+./run-uri.sh protostuffdb /todo/user/Todo/list payload/get.json
+protostuffdb
+jni rpc: 117 ms | total: 632 ms
+elapsed ms: 63,837 | ops/sec: 156,647 | response body bytes: 80
+```
+
+**list**
+```
+./run-uri.sh protostuffdb /todo/user/Todo/list payload/list.json 1000000
+protostuffdb
+jni rpc: 31 ms | total: 120 ms
+elapsed ms: 42,406 | ops/sec: 23,581 | response body bytes: 2,052
+```
