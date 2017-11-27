@@ -355,3 +355,166 @@ ls -al test4K-rw-aio
 -rw-r--r-- 1 deploy deploy 4294967296 Oct  8 09:01 test4K-rw-aio
 ```
 
+## ovh sg - 1024M (/usr/bin/python missing, install via: apt-get install python)
+`df -h`
+```
+Filesystem      Size  Used Avail Use% Mounted on
+udev            476M     0  476M   0% /dev
+tmpfs            97M  3.0M   94M   4% /run
+/dev/sda1        30G  1.5G   28G   6% /
+tmpfs           485M     0  485M   0% /dev/shm
+tmpfs           5.0M     0  5.0M   0% /run/lock
+tmpfs           485M     0  485M   0% /sys/fs/cgroup
+tmpfs            97M     0   97M   0% /run/user/901
+```
+
+*rw*
+```
+./fio --filename=test4K-rw-aio --ioengine=libaio --direct=1 --norandommap --randrepeat=0 --runtime=300 --blocksize=4K --rw=randrw --iodepth=4 --numjobs=1 --group_reporting --name=myjob --size=4G --rwmixread=40
+myjob: (g=0): rw=randrw, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=libaio, iodepth=4
+fio-3.1
+Starting 1 process
+myjob: Laying out IO file (1 file / 4096MiB)
+Jobs: 1 (f=1): [m(1)][7.1%][r=41.1MiB/s,w=62.2MiB/s][r=10.5k,w=15.9k IOPS][eta 0Jobs: 1 (f=1): [m(1)][9.8%][r=42.0MiB/s,w=61.0MiB/s][r=10.8k,w=15.9k IOPS][eta 0Jobs: 1 (f=1): [m(1)][12.2%][r=42.1MiB/s,w=62.2MiB/s][r=10.8k,w=15.9k IOPS][eta Jobs: 1 (f=1): [m(1)][14.6%][r=42.3MiB/s,w=62.0MiB/s][r=10.8k,w=15.9k IOPS][eta Jobs: 1 (f=1): [m(1)][17.5%][r=42.4MiB/s,w=63.2MiB/s][r=10.9k,w=16.2k IOPS][eta Jobs: 1 (f=1): [m(1)][20.0%][r=40.8MiB/s,w=61.7MiB/s][r=10.4k,w=15.8k IOPS][eta Jobs: 1 (f=1): [m(1)][22.5%][r=43.6MiB/s,w=63.4MiB/s][r=11.2k,w=16.2k IOPS][eta Jobs: 1 (f=1): [m(1)][25.0%][r=42.6MiB/s,w=63.0MiB/s][r=10.9k,w=16.1k IOPS][eta Jobs: 1 (f=1): [m(1)][27.5%][r=40.9MiB/s,w=62.8MiB/s][r=10.5k,w=16.1k IOPS][eta Jobs: 1 (f=1): [m(1)][30.0%][r=40.0MiB/s,w=61.7MiB/s][r=10.2k,w=15.8k IOPS][eta Jobs: 1 (f=1): [m(1)][32.5%][r=41.6MiB/s,w=62.5MiB/s][r=10.7k,w=16.0k IOPS][eta Jobs: 1 (f=1): [m(1)][35.0%][r=41.5MiB/s,w=61.9MiB/s][r=10.6k,w=15.8k IOPS][eta Jobs: 1 (f=1): [m(1)][37.5%][r=41.7MiB/s,w=62.5MiB/s][r=10.7k,w=16.0k IOPS][eta Jobs: 1 (f=1): [m(1)][40.0%][r=40.2MiB/s,w=59.3MiB/s][r=10.3k,w=15.2k IOPS][eta Jobs: 1 (f=1): [m(1)][42.5%][r=40.0MiB/s,w=61.6MiB/s][r=10.5k,w=15.8k IOPS][eta Jobs: 1 (f=1): [m(1)][45.0%][r=41.7MiB/s,w=61.0MiB/s][r=10.7k,w=15.9k IOPS][eta Jobs: 1 (f=1): [m(1)][47.5%][r=41.4MiB/s,w=62.4MiB/s][r=10.6k,w=15.0k IOPS][eta Jobs: 1 (f=1): [m(1)][50.0%][r=41.7MiB/s,w=62.8MiB/s][r=10.7k,w=16.1k IOPS][eta Jobs: 1 (f=1): [m(1)][52.5%][r=41.1MiB/s,w=62.9MiB/s][r=10.5k,w=16.1k IOPS][eta Jobs: 1 (f=1): [m(1)][55.0%][r=41.1MiB/s,w=62.3MiB/s][r=10.5k,w=15.9k IOPS][eta Jobs: 1 (f=1): [m(1)][57.5%][r=40.1MiB/s,w=61.6MiB/s][r=10.3k,w=15.8k IOPS][eta Jobs: 1 (f=1): [m(1)][60.0%][r=41.1MiB/s,w=61.1MiB/s][r=10.5k,w=15.6k IOPS][eta Jobs: 1 (f=1): [m(1)][62.5%][r=41.4MiB/s,w=62.6MiB/s][r=10.6k,w=16.0k IOPS][eta Jobs: 1 (f=1): [m(1)][65.0%][r=41.3MiB/s,w=62.6MiB/s][r=10.6k,w=16.0k IOPS][eta Jobs: 1 (f=1): [m(1)][67.5%][r=42.4MiB/s,w=64.6MiB/s][r=10.8k,w=16.5k IOPS][eta Jobs: 1 (f=1): [m(1)][70.0%][r=43.3MiB/s,w=63.4MiB/s][r=11.1k,w=16.2k IOPS][eta Jobs: 1 (f=1): [m(1)][72.5%][r=42.1MiB/s,w=63.8MiB/s][r=10.8k,w=16.3k IOPS][eta Jobs: 1 (f=1): [m(1)][75.0%][r=41.7MiB/s,w=62.8MiB/s][r=10.7k,w=16.1k IOPS][eta Jobs: 1 (f=1): [m(1)][77.5%][r=40.0MiB/s,w=61.2MiB/s][r=10.5k,w=15.7k IOPS][eta Jobs: 1 (f=1): [m(1)][80.0%][r=39.3MiB/s,w=59.8MiB/s][r=10.1k,w=15.3k IOPS][eta Jobs: 1 (f=1): [m(1)][82.5%][r=40.1MiB/s,w=61.0MiB/s][r=10.3k,w=15.6k IOPS][eta Jobs: 1 (f=1): [m(1)][85.0%][r=41.5MiB/s,w=61.6MiB/s][r=10.6k,w=15.8k IOPS][eta Jobs: 1 (f=1): [m(1)][87.5%][r=42.3MiB/s,w=64.3MiB/s][r=10.8k,w=16.5k IOPS][eta Jobs: 1 (f=1): [m(1)][90.0%][r=41.3MiB/s,w=62.5MiB/s][r=10.6k,w=15.0k IOPS][eta Jobs: 1 (f=1): [m(1)][92.5%][r=42.7MiB/s,w=65.2MiB/s][r=10.9k,w=16.7k IOPS][eta Jobs: 1 (f=1): [m(1)][95.0%][r=41.7MiB/s,w=62.0MiB/s][r=10.7k,w=15.9k IOPS][eta Jobs: 1 (f=1): [m(1)][97.5%][r=40.6MiB/s,w=60.5MiB/s][r=10.4k,w=15.5k IOPS][eta Jobs: 1 (f=1): [m(1)][100.0%][r=41.5MiB/s,w=62.4MiB/s][r=10.6k,w=15.0k IOPS][eta 00m:00s]
+myjob: (groupid=0, jobs=1): err= 0: pid=15002: Mon Nov 27 15:46:48 2017
+   read: IOPS=10.6k, BW=41.4MiB/s (43.4MB/s)(1637MiB/39525msec)
+    slat (nsec): min=1517, max=1009.0k, avg=4517.67, stdev=3028.67
+    clat (usec): min=32, max=5245, avg=215.49, stdev=202.34
+     lat (usec): min=75, max=5247, avg=220.17, stdev=202.39
+    clat percentiles (usec):
+     |  1.00th=[  130],  5.00th=[  139], 10.00th=[  145], 20.00th=[  153],
+     | 30.00th=[  161], 40.00th=[  169], 50.00th=[  178], 60.00th=[  190],
+     | 70.00th=[  202], 80.00th=[  219], 90.00th=[  247], 95.00th=[  281],
+     | 99.00th=[ 1401], 99.50th=[ 1795], 99.90th=[ 2409], 99.95th=[ 2540],
+     | 99.99th=[ 2737]
+   bw (  KiB/s): min=38120, max=45264, per=100.00%, avg=42403.85, stdev=1229.55, samples=79
+   iops        : min= 9530, max=11316, avg=10600.96, stdev=307.39, samples=79
+  write: IOPS=15.9k, BW=62.2MiB/s (65.2MB/s)(2459MiB/39525msec)
+    slat (nsec): min=1714, max=343818, avg=4889.53, stdev=2822.07
+    clat (usec): min=20, max=2621, avg=98.04, stdev=46.67
+     lat (usec): min=49, max=2626, avg=103.10, stdev=46.72
+    clat percentiles (usec):
+     |  1.00th=[   55],  5.00th=[   60], 10.00th=[   64], 20.00th=[   69],
+     | 30.00th=[   74], 40.00th=[   80], 50.00th=[   87], 60.00th=[   98],
+     | 70.00th=[  112], 80.00th=[  124], 90.00th=[  147], 95.00th=[  165],
+     | 99.00th=[  204], 99.50th=[  225], 99.90th=[  494], 99.95th=[ 1012],
+     | 99.99th=[ 1467]
+   bw (  KiB/s): min=56928, max=67944, per=100.00%, avg=63716.91, stdev=1746.15, samples=79
+   iops        : min=14232, max=16986, avg=15929.23, stdev=436.54, samples=79
+  lat (usec)   : 50=0.06%, 100=37.02%, 250=59.12%, 500=2.57%, 750=0.29%
+  lat (usec)   : 1000=0.21%
+  lat (msec)   : 2=0.59%, 4=0.12%, 10=0.01%
+  cpu          : usr=3.71%, sys=18.50%, ctx=838612, majf=0, minf=11
+  IO depths    : 1=0.1%, 2=0.1%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwt: total=419003,629573,0, short=0,0,0, dropped=0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=4
+
+Run status group 0 (all jobs):
+   READ: bw=41.4MiB/s (43.4MB/s), 41.4MiB/s-41.4MiB/s (43.4MB/s-43.4MB/s), io=1637MiB (1716MB), run=39525-39525msec
+  WRITE: bw=62.2MiB/s (65.2MB/s), 62.2MiB/s-62.2MiB/s (65.2MB/s-65.2MB/s), io=2459MiB (2579MB), run=39525-39525msec
+
+Disk stats (read/write):
+  sda: ios=418336/628584, merge=0/7, ticks=88632/60944, in_queue=149468, util=99.74%
+```
+
+*file-size*
+```
+ls -al test4K-rw-aio 
+-rw-r--r-- 1 deploy deploy 4294967296 Nov 27 15:46 test4K-rw-aio
+```
+
+## itldc lax - 992M (/usr/bin/python missing, install via: apt-get install python)
+`df -h`
+```
+Filesystem      Size  Used Avail Use% Mounted on
+udev            479M     0  479M   0% /dev
+tmpfs           100M  3.0M   97M   3% /run
+/dev/vda2       9.5G  1.9G  7.2G  21% /
+tmpfs           497M     0  497M   0% /dev/shm
+tmpfs           5.0M     0  5.0M   0% /run/lock
+tmpfs           497M     0  497M   0% /sys/fs/cgroup
+```
+
+*rw*
+```
+./fio --filename=test4K-rw-aio --ioengine=libaio --direct=1 --norandommap --randrepeat=0 --runtime=300 --blocksize=4K --rw=randrw --iodepth=4 --numjobs=1 --group_reporting --name=myjob --size=4G --rwmixread=40
+myjob: (g=0): rw=randrw, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=libaio, iodepth=4
+fio-3.1
+Starting 1 process
+myjob: Laying out IO file (1 file / 4096MiB)
+Jobs: 1 (f=1): [m(1)][16.7%][r=97.0MiB/s,w=145MiB/s][r=24.8k,w=37.1k IOPS][eta 0Jobs: 1 (f=1): [m(1)][23.5%][r=110MiB/s,w=164MiB/s][r=28.2k,w=42.1k IOPS][eta 00Jobs: 1 (f=1): [m(1)][31.2%][r=129MiB/s,w=191MiB/s][r=32.0k,w=48.8k IOPS][eta 00Jobs: 1 (f=1): [m(1)][40.0%][r=129MiB/s,w=194MiB/s][r=33.1k,w=49.6k IOPS][eta 00Jobs: 1 (f=1): [m(1)][46.7%][r=127MiB/s,w=192MiB/s][r=32.6k,w=49.1k IOPS][eta 00Jobs: 1 (f=1): [m(1)][53.3%][r=130MiB/s,w=195MiB/s][r=33.2k,w=49.8k IOPS][eta 00Jobs: 1 (f=1): [m(1)][64.3%][r=130MiB/s,w=195MiB/s][r=33.3k,w=50.0k IOPS][eta 00Jobs: 1 (f=1): [m(1)][71.4%][r=131MiB/s,w=196MiB/s][r=33.6k,w=50.3k IOPS][eta 00Jobs: 1 (f=1): [m(1)][78.6%][r=129MiB/s,w=194MiB/s][r=33.1k,w=49.7k IOPS][eta 00Jobs: 1 (f=1): [m(1)][85.7%][r=128MiB/s,w=192MiB/s][r=32.8k,w=49.1k IOPS][eta 00Jobs: 1 (f=1): [m(1)][92.9%][r=129MiB/s,w=193MiB/s][r=32.9k,w=49.4k IOPS][eta 00Jobs: 1 (f=1): [m(1)][100.0%][r=110MiB/s,w=165MiB/s][r=28.2k,w=42.3k IOPS][eta 00m:00s]
+myjob: (groupid=0, jobs=1): err= 0: pid=2223: Mon Nov 27 06:46:32 2017
+   read: IOPS=31.2k, BW=122MiB/s (128MB/s)(1640MiB/13439msec)
+    slat (nsec): min=1267, max=2568.4k, avg=3762.56, stdev=6147.95
+    clat (nsec): min=565, max=13867k, avg=44885.30, stdev=59279.47
+     lat (usec): min=17, max=13869, avg=48.89, stdev=59.86
+    clat percentiles (usec):
+     |  1.00th=[   21],  5.00th=[   25], 10.00th=[   27], 20.00th=[   31],
+     | 30.00th=[   34], 40.00th=[   37], 50.00th=[   41], 60.00th=[   45],
+     | 70.00th=[   50], 80.00th=[   56], 90.00th=[   66], 95.00th=[   75],
+     | 99.00th=[  106], 99.50th=[  133], 99.90th=[  243], 99.95th=[  338],
+     | 99.99th=[ 1254]
+   bw (  KiB/s): min=94124, max=146355, per=99.94%, avg=124863.85, stdev=13735.12, samples=26
+   iops        : min=23531, max=36588, avg=31215.88, stdev=3433.75, samples=26
+  write: IOPS=46.8k, BW=183MiB/s (192MB/s)(2456MiB/13439msec)
+    slat (nsec): min=1625, max=9626.8k, avg=4394.83, stdev=12866.15
+    clat (nsec): min=888, max=14492k, avg=46476.10, stdev=52801.51
+     lat (usec): min=16, max=14497, avg=51.11, stdev=54.91
+    clat percentiles (usec):
+     |  1.00th=[   22],  5.00th=[   26], 10.00th=[   29], 20.00th=[   32],
+     | 30.00th=[   36], 40.00th=[   39], 50.00th=[   43], 60.00th=[   46],
+     | 70.00th=[   51], 80.00th=[   58], 90.00th=[   68], 95.00th=[   78],
+     | 99.00th=[  112], 99.50th=[  141], 99.90th=[  297], 99.95th=[  424],
+     | 99.99th=[ 1172]
+   bw (  KiB/s): min=143887, max=218251, per=99.95%, avg=187067.69, stdev=20512.76, samples=26
+   iops        : min=35971, max=54562, avg=46766.81, stdev=5128.23, samples=26
+  lat (nsec)   : 750=0.01%, 1000=0.01%
+  lat (usec)   : 2=0.01%, 10=0.01%, 20=0.42%, 50=69.30%, 100=28.91%
+  lat (usec)   : 250=1.25%, 500=0.08%, 750=0.02%, 1000=0.01%
+  lat (msec)   : 2=0.01%, 4=0.01%, 10=0.01%, 20=0.01%
+  cpu          : usr=11.46%, sys=43.37%, ctx=266654, majf=0, minf=11
+  IO depths    : 1=0.1%, 2=0.1%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwt: total=419766,628810,0, short=0,0,0, dropped=0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=4
+
+Run status group 0 (all jobs):
+   READ: bw=122MiB/s (128MB/s), 122MiB/s-122MiB/s (128MB/s-128MB/s), io=1640MiB (1719MB), run=13439-13439msec
+  WRITE: bw=183MiB/s (192MB/s), 183MiB/s-183MiB/s (192MB/s-192MB/s), io=2456MiB (2576MB), run=13439-13439msec
+
+Disk stats (read/write):
+  vda: ios=419054/627767, merge=0/2, ticks=13316/27300, in_queue=40504, util=91.65%
+```
+
+*file-size*
+```
+ls -al test4K-rw-aio 
+-rw-r--r-- 1 deploy deploy 4294967296 Nov 27 06:46 test4K-rw-aio
+```
+
+## impactvps ovz - 1024M (/usr/bin/python missing, install via: apt-get install python)
+`df -h`
+```
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/simfs       15G  1.1G   14G   7% /
+devtmpfs        512M     0  512M   0% /dev
+tmpfs           512M     0  512M   0% /dev/shm
+tmpfs           512M  6.7M  506M   2% /run
+tmpfs           5.0M     0  5.0M   0% /run/lock
+tmpfs           512M     0  512M   0% /sys/fs/cgroup
+tmpfs           103M     0  103M   0% /run/user/901
+```
+
+*rw*
+```
+
+```
+
+*file-size*
+```
+
+```
+
