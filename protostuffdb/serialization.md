@@ -175,6 +175,34 @@ jni rpc: 30 ms | total: 96 ms
 elapsed ms: 6,933 | ops/sec: 1,442,279 | response body bytes: 25
 ```
 
+## itldc lax - 992M (/usr/bin/python missing, install via: apt-get install python)
+```
+./run-uri.sh protostuffdb /todo/user/generateInt /dev/null
+protostuffdb
+jni rpc: 60 ms | total: 151 ms
+elapsed ms: 4,601 | ops/sec: 2,173,074 | response body bytes: 20
+
+./run-uri.sh protostuffdb /todo/user/parseInt payload/echoInt.json
+protostuffdb
+jni rpc: 59 ms | total: 152 ms
+elapsed ms: 7,197 | ops/sec: 1,389,370 | response body bytes: 6
+
+./run-uri.sh protostuffdb /todo/user/echoInt payload/echoInt.json
+protostuffdb
+jni rpc: 66 ms | total: 166 ms
+elapsed ms: 8,849 | ops/sec: 1,129,998 | response body bytes: 20
+
+./run-uri.sh protostuffdb /todo/user/echoStr payload/echoStr.json
+protostuffdb
+jni rpc: 72 ms | total: 159 ms
+elapsed ms: 8,802 | ops/sec: 1,136,004 | response body bytes: 25
+
+./run-uri.sh protostuffdb /todo/user/echoKey payload/echoKey.json
+protostuffdb
+jni rpc: 82 ms | total: 177 ms
+elapsed ms: 9,636 | ops/sec: 1,037,725 | response body bytes: 25
+```
+
 ## impactvps ovz - 1024M (/usr/bin/python missing, install via: apt-get install python)
 ```
 ./run-uri.sh protostuffdb /todo/user/generateInt /dev/null
