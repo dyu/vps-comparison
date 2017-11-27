@@ -261,6 +261,45 @@ du -sh target/data/main/user
 163M	target/data/main/user
 ```
 
+## itldc lax - 992M (/usr/bin/python missing, install via: apt-get install python)
+`df -h`
+```
+Filesystem      Size  Used Avail Use% Mounted on
+udev            479M     0  479M   0% /dev
+tmpfs           100M  3.0M   97M   3% /run
+/dev/vda2       9.5G  1.7G  7.4G  19% /
+tmpfs           497M     0  497M   0% /dev/shm
+tmpfs           5.0M     0  5.0M   0% /run/lock
+tmpfs           497M     0  497M   0% /sys/fs/cgroup
+```
+
+**create**
+```
+./run-uri.sh protostuffdb /todo/user/Todo/create payload/create.json
+protostuffdb
+jni rpc: 83 ms | total: 182 ms
+elapsed ms: 104,522 | ops/sec: 95,673 | response body bytes: 80
+
+du -sh target/data/main/user
+161M	target/data/main/user
+```
+
+**get**
+```
+./run-uri.sh protostuffdb /todo/user/Todo/list payload/get.json
+protostuffdb
+jni rpc: 134 ms | total: 227 ms
+elapsed ms: 58,205 | ops/sec: 171,804 | response body bytes: 80
+```
+
+**list**
+```
+./run-uri.sh protostuffdb /todo/user/Todo/list payload/list.json 1000000
+protostuffdb
+jni rpc: 68 ms | total: 165 ms
+elapsed ms: 41,653 | ops/sec: 24,007 | response body bytes: 2,052
+```
+
 ## impactvps ovz - 1024M (/usr/bin/python missing, install via: apt-get install python)
 `df -h`
 ```
@@ -280,7 +319,8 @@ tmpfs           103M     0  103M   0% /run/user/901
 protostuffdb
 jni rpc: 30 ms | total: 108 ms
 elapsed ms: 74,802 | ops/sec: 133,686 | response body bytes: 80
-deploy@iv1:~/tmp/tars/todo-linux-bench-x64/bench$ du -sh target/data/main/user
+
+du -sh target/data/main/user
 161M	target/data/main/user
 ```
 
@@ -298,4 +338,21 @@ elapsed ms: 63,837 | ops/sec: 156,647 | response body bytes: 80
 protostuffdb
 jni rpc: 31 ms | total: 120 ms
 elapsed ms: 42,406 | ops/sec: 23,581 | response body bytes: 2,052
+```
+
+## ovh sg - 1024M (/usr/bin/python missing, install via: apt-get install python)
+`df -h`
+```
+Filesystem      Size  Used Avail Use% Mounted on
+udev            476M     0  476M   0% /dev
+tmpfs            97M  3.0M   94M   4% /run
+/dev/sda1        30G  1.5G   28G   6% /
+tmpfs           485M     0  485M   0% /dev/shm
+tmpfs           5.0M     0  5.0M   0% /run/lock
+tmpfs           485M     0  485M   0% /sys/fs/cgroup
+tmpfs            97M     0   97M   0% /run/user/901
+```
+
+```
+TODO
 ```
