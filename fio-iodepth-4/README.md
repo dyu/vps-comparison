@@ -1,6 +1,6 @@
 ## Setup
 ```sh
-sudo apt-get install libaio-dev
+sudo apt-get install libaio-dev libnuma-dev
 
 mkdir -p tmp/tars/fio-bin
 
