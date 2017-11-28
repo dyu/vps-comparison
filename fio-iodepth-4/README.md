@@ -40,5 +40,7 @@ ovh sg        - 968M                                            22.1k  58.3k  21
 itldc lax     - 992M                                            60.5k  90.2k  47.1k  132k   31.2k/46.8k
 
 impactvps ovz - 1024M                                           18.8k  70.1k  5642   8716   4556/6849
+
+launchvps lax - 2000M                                           35.7k  27.1k  26.1k  142k   4920/7366
 ```
 
