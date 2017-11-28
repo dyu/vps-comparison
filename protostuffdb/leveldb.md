@@ -340,6 +340,50 @@ jni rpc: 31 ms | total: 120 ms
 elapsed ms: 42,406 | ops/sec: 23,581 | response body bytes: 2,052
 ```
 
+## launchvps lax - 2000M (/usr/bin/python missing, install via: apt-get install python)
+`df -h`
+```
+              total        used        free      shared  buff/cache   available
+Mem:           2000          52        1037           3         909        1779
+Swap:          2044           0        2044
+deploy@lvps1:~$ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+udev            981M     0  981M   0% /dev
+tmpfs           201M  3.1M  197M   2% /run
+/dev/vda1        28G  1.9G   25G   8% /
+tmpfs          1001M     0 1001M   0% /dev/shm
+tmpfs           5.0M     0  5.0M   0% /run/lock
+tmpfs          1001M     0 1001M   0% /sys/fs/cgroup
+tmpfs           201M     0  201M   0% /run/user/901
+```
+
+**create**
+```
+./run-uri.sh protostuffdb /todo/user/Todo/create payload/create.json
+protostuffdb
+jni rpc: 24 ms | total: 81 ms
+elapsed ms: 50,772 | ops/sec: 196,956 | response body bytes: 80
+
+du -sh target/data/main/user
+161M	target/data/main/user
+```
+
+**get**
+```
+./run-uri.sh protostuffdb /todo/user/Todo/list payload/get.json
+protostuffdb
+jni rpc: 58 ms | total: 113 ms
+elapsed ms: 40,414 | ops/sec: 247,433 | response body bytes: 80
+```
+
+**list**
+```
+./run-uri.sh protostuffdb /todo/user/Todo/list payload/list.json 1000000
+protostuffdb
+jni rpc: 22 ms | total: 71 ms
+elapsed ms: 28,905 | ops/sec: 34,595 | response body bytes: 2,052
+```
+
 ## ovh sg - 1024M (/usr/bin/python missing, install via: apt-get install python)
 `df -h`
 ```

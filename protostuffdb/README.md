@@ -96,6 +96,8 @@ upcloud       - 992M         146,642       238,544       33,914
 itldc lax     - 992M         95,673        171,804       24,007
 
 impactvps ovz - 1024M        133,686       156,647       23,581
+
+launchvps lax - 2000M        196,956       247,433       34,595
 ```
 
 ## leveldb with replication log (5M iterations on I)
