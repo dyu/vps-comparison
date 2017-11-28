@@ -230,3 +230,31 @@ protostuffdb
 jni rpc: 31 ms | total: 115 ms
 elapsed ms: 10,663 | ops/sec: 937,750 | response body bytes: 25
 ```
+
+## serverhand dallas - 2000M (/usr/bin/python missing, install via: apt-get install python)
+```
+./run-uri.sh protostuffdb /todo/user/generateInt /dev/null
+protostuffdb
+jni rpc: 292 ms | total: 592 ms
+elapsed ms: 28,117 | ops/sec: 355,650 | response body bytes: 20
+
+./run-uri.sh protostuffdb /todo/user/parseInt payload/echoInt.json
+protostuffdb
+jni rpc: 297 ms | total: 1013 ms
+elapsed ms: 63,609 | ops/sec: 157,209 | response body bytes: 6
+
+./run-uri.sh protostuffdb /todo/user/echoInt payload/echoInt.json
+protostuffdb
+jni rpc: 186 ms | total: 476 ms
+elapsed ms: 69,091 | ops/sec: 144,736 | response body bytes: 20
+
+./run-uri.sh protostuffdb /todo/user/echoStr payload/echoStr.json
+protostuffdb
+jni rpc: 302 ms | total: 995 ms
+elapsed ms: 82,077 | ops/sec: 121,835 | response body bytes: 25
+
+./run-uri.sh protostuffdb /todo/user/echoKey payload/echoKey.json
+protostuffdb
+jni rpc: 392 ms | total: 1195 ms
+elapsed ms: 96,894 | ops/sec: 103,205 | response body bytes: 25
+```
