@@ -1,4 +1,6 @@
-## setup
+This benchmark measures raw perf of cpu (serialization) and memory (gc pressure)
+
+### Setup
 ```sh
 mkdir -p tmp/tars/todo-linux-bench-x64
 
@@ -11,7 +13,7 @@ cd tmp/tars/todo-linux-bench-x64
 tar -xzf ../todo-linux-bench-x64.tar.gz
 ```
 
-## test echo via curl
+### test echo via curl
 ```sh
 cd bench
 ./run.sh
@@ -20,13 +22,14 @@ cd bench
 curl http://127.0.0.1:5000/todo/user/echoInt -X POST -d @payload/echoInt.json
 ```
 
-## test bench echo
+### test bench echo
 ```sh
 # 1M iterations, 1K warmups
 ./run-uri.sh protostuffdb /todo/user/echoInt payload/echoInt.json 1000000 1000
 ```
 
-# Results
+Results
+=======
 
 ### ops/sec summary on ubuntu 16.04 x64
 
