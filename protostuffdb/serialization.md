@@ -231,6 +231,34 @@ jni rpc: 31 ms | total: 115 ms
 elapsed ms: 10,663 | ops/sec: 937,750 | response body bytes: 25
 ```
 
+## launchvps lax - 2000M (/usr/bin/python missing, install via: apt-get install python)
+```
+./run-uri.sh protostuffdb /todo/user/generateInt /dev/null
+protostuffdb
+jni rpc: 23 ms | total: 102 ms
+elapsed ms: 3,276 | ops/sec: 3,051,870 | response body bytes: 20
+
+./run-uri.sh protostuffdb /todo/user/parseInt payload/echoInt.json
+protostuffdb
+jni rpc: 24 ms | total: 102 ms
+elapsed ms: 5,868 | ops/sec: 1,703,880 | response body bytes: 6
+
+./run-uri.sh protostuffdb /todo/user/echoInt payload/echoInt.json
+protostuffdb
+jni rpc: 21 ms | total: 69 ms
+elapsed ms: 6,158 | ops/sec: 1,623,692 | response body bytes: 20
+
+./run-uri.sh protostuffdb /todo/user/echoStr payload/echoStr.json
+protostuffdb
+jni rpc: 31 ms | total: 96 ms
+elapsed ms: 6,394 | ops/sec: 1,563,824 | response body bytes: 25
+
+./run-uri.sh protostuffdb /todo/user/echoKey payload/echoKey.json
+protostuffdb
+jni rpc: 23 ms | total: 77 ms
+elapsed ms: 7,402 | ops/sec: 1,350,889 | response body bytes: 25
+```
+
 ## serverhand dallas - 2000M (/usr/bin/python missing, install via: apt-get install python)
 ```
 ./run-uri.sh protostuffdb /todo/user/generateInt /dev/null
