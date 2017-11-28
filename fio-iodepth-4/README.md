@@ -2,7 +2,7 @@
 ```sh
 sudo apt-get install libaio-dev libnuma-dev
 
-mkdir -p tmp/tars/fio-bin
+mkdir -p tmp/tars
 
 wget 'https://onedrive.live.com/download?cid=73A9A646B31A141F&resid=73A9A646B31A141F%21313&authkey=AKuD8CFKysOnqiI' -O tmp/tars/fio-bin.tar.gz
 
