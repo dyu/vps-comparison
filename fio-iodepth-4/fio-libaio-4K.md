@@ -851,3 +851,95 @@ Run status group 0 (all jobs):
 Disk stats (read/write):
   vda: ios=1042737/4, merge=0/2, ticks=131308/0, in_queue=131212, util=92.27%
 ```
+
+## serverhand lax - 2000M (/usr/bin/python missing, install via: apt-get install python)
+`df -h`
+```
+Filesystem      Size  Used Avail Use% Mounted on
+udev            982M     0  982M   0% /dev
+tmpfs           201M  3.2M  197M   2% /run
+/dev/sda1        49G  1.8G   44G   4% /
+tmpfs          1001M     0 1001M   0% /dev/shm
+tmpfs           5.0M     0  5.0M   0% /run/lock
+tmpfs          1001M     0 1001M   0% /sys/fs/cgroup
+tmpfs           201M     0  201M   0% /run/user/901
+```
+
+*writes*
+```
+./fio --filename=test4K-aio --rw=write --ioengine=libaio --direct=1 --blocksize=4K --size=4G --iodepth=4 --group_reporting --name=myjob
+myjob: (g=0): rw=write, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=libaio, iodepth=4
+fio-3.1
+Starting 1 process
+myjob: Laying out IO file (1 file / 4096MiB)
+Jobs: 1 (f=1): [W(1)][100.0%][r=0KiB/s,w=16.0MiB/s][r=0,w=4105 IOPS][eta 00m:00s]
+myjob: (groupid=0, jobs=1): err= 0: pid=16597: Wed Nov 29 14:06:04 2017
+  write: IOPS=3935, BW=15.4MiB/s (16.1MB/s)(4096MiB/266439msec)
+    slat (nsec): min=1984, max=1397.9k, avg=6550.65, stdev=4269.83
+    clat (usec): min=273, max=439818, avg=1007.80, stdev=964.26
+     lat (usec): min=356, max=439825, avg=1014.58, stdev=964.47
+    clat percentiles (usec):
+     |  1.00th=[  799],  5.00th=[  824], 10.00th=[  840], 20.00th=[  857],
+     | 30.00th=[  873], 40.00th=[  889], 50.00th=[  914], 60.00th=[  947],
+     | 70.00th=[  996], 80.00th=[ 1057], 90.00th=[ 1172], 95.00th=[ 1303],
+     | 99.00th=[ 1582], 99.50th=[ 6128], 99.90th=[ 6652], 99.95th=[ 6783],
+     | 99.99th=[ 7046]
+   bw (  KiB/s): min= 4328, max=18160, per=99.98%, avg=15739.15, stdev=1470.98, samples=532
+   iops        : min= 1082, max= 4540, avg=3934.77, stdev=367.74, samples=532
+  lat (usec)   : 500=0.01%, 750=0.03%, 1000=71.08%
+  lat (msec)   : 2=28.09%, 4=0.01%, 10=0.78%, 250=0.01%, 500=0.01%
+  cpu          : usr=1.25%, sys=3.30%, ctx=1048682, majf=0, minf=12
+  IO depths    : 1=0.1%, 2=0.1%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwt: total=0,1048576,0, short=0,0,0, dropped=0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=4
+
+Run status group 0 (all jobs):
+  WRITE: bw=15.4MiB/s (16.1MB/s), 15.4MiB/s-15.4MiB/s (16.1MB/s-16.1MB/s), io=4096MiB (4295MB), run=266439-266439msec
+
+Disk stats (read/write):
+  sda: ios=0/786204, merge=0/262425, ticks=0/698624, in_queue=698452, util=100.00%
+```
+
+*file-size*
+```
+ls -al test4K-aio
+-rw-r--r-- 1 deploy deploy 4294967296 Nov 29 14:06 test4K-aio
+```
+
+*reads*
+```
+./fio --filename=test4K-aio --rw=read --ioengine=libaio --direct=1 --blocksize=4K --runtime=300 --iodepth=4 --group_reporting --name=myjob
+myjob: (g=0): rw=read, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=libaio, iodepth=4
+fio-3.1
+Starting 1 process
+Jobs: 1 (f=1): [R(1)][100.0%][r=35.6MiB/s,w=0KiB/s][r=9124,w=0 IOPS][eta 00m:00s]
+myjob: (groupid=0, jobs=1): err= 0: pid=16616: Wed Nov 29 14:11:41 2017
+   read: IOPS=8876, BW=34.7MiB/s (36.4MB/s)(4096MiB/118131msec)
+    slat (nsec): min=852, max=304340, avg=2756.84, stdev=1132.27
+    clat (usec): min=135, max=17466, avg=446.71, stdev=67.70
+     lat (usec): min=186, max=17468, avg=449.63, stdev=67.75
+    clat percentiles (usec):
+     |  1.00th=[  388],  5.00th=[  392], 10.00th=[  396], 20.00th=[  404],
+     | 30.00th=[  412], 40.00th=[  420], 50.00th=[  433], 60.00th=[  445],
+     | 70.00th=[  465], 80.00th=[  494], 90.00th=[  519], 95.00th=[  537],
+     | 99.00th=[  578], 99.50th=[  603], 99.90th=[  701], 99.95th=[  766],
+     | 99.99th=[ 1123]
+   bw (  KiB/s): min=29584, max=38016, per=99.99%, avg=35502.21, stdev=1266.34, samples=236
+   iops        : min= 7396, max= 9504, avg=8875.53, stdev=316.59, samples=236
+  lat (usec)   : 250=0.01%, 500=82.30%, 750=17.64%, 1000=0.04%
+  lat (msec)   : 2=0.01%, 4=0.01%, 10=0.01%, 20=0.01%
+  cpu          : usr=13.78%, sys=44.41%, ctx=786456, majf=0, minf=15
+  IO depths    : 1=0.1%, 2=0.1%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwt: total=1048576,0,0, short=0,0,0, dropped=0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=4
+
+Run status group 0 (all jobs):
+   READ: bw=34.7MiB/s (36.4MB/s), 34.7MiB/s-34.7MiB/s (36.4MB/s-36.4MB/s), io=4096MiB (4295MB), run=118131-118131msec
+
+Disk stats (read/write):
+  sda: ios=784828/11, merge=261632/2, ticks=284904/0, in_queue=284768, util=99.97%
+```
