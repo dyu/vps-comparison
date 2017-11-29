@@ -567,10 +567,6 @@ ls -al test4K-rw-aio
 ## launchvps lax - 2000M (/usr/bin/python missing, install via: apt-get install python)
 `df -h`
 ```
-              total        used        free      shared  buff/cache   available
-Mem:           2000          52        1037           3         909        1779
-Swap:          2044           0        2044
-deploy@lvps1:~$ df -h
 Filesystem      Size  Used Avail Use% Mounted on
 udev            981M     0  981M   0% /dev
 tmpfs           201M  3.1M  197M   2% /run
