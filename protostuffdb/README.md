@@ -83,21 +83,23 @@ L = list @ 1M iterations
 ```
                              I             G             L
 
-aws ec2 micro - 990M         119,492       212,111       26,952
+aws ec2 micro   - 990M         119,492       212,111       26,952
 
-gcloud micro  - 585M         19,386        48,206        5,769
+gcloud micro    - 585M         19,386        48,206        5,769
 
-vultr         - 488M         85,007        154,638       21,456
+vultr           - 488M         85,007        154,638       21,456
 
-linode        - 989M         104,550       165,869       24,194
+linode          - 989M         104,550       165,869       24,194
 
-upcloud       - 992M         146,642       238,544       33,914
+upcloud         - 992M         146,642       238,544       33,914
 
-itldc lax     - 992M         95,673        171,804       24,007
+itldc lax       - 992M         95,673        171,804       24,007
 
-impactvps ovz - 1024M        133,686       156,647       23,581
+impactvps ovz   - 1024M        133,686       156,647       23,581
 
-launchvps lax - 2000M        196,956       247,433       34,595
+launchvps lax   - 2000M        196,956       247,433       34,595
+
+serverhand lax  - 2000M        209,867       266,453       37,589
 ```
 
 ## leveldb with replication log (5M iterations on I)

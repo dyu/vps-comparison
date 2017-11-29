@@ -380,6 +380,46 @@ jni rpc: 22 ms | total: 71 ms
 elapsed ms: 28,905 | ops/sec: 34,595 | response body bytes: 2,052
 ```
 
+## serverhand lax - 2000M (/usr/bin/python missing, install via: apt-get install python)
+`df -h`
+```
+Filesystem      Size  Used Avail Use% Mounted on
+udev            982M     0  982M   0% /dev
+tmpfs           201M  3.2M  197M   2% /run
+/dev/sda1        49G  1.8G   44G   4% /
+tmpfs          1001M     0 1001M   0% /dev/shm
+tmpfs           5.0M     0  5.0M   0% /run/lock
+tmpfs          1001M     0 1001M   0% /sys/fs/cgroup
+tmpfs           201M     0  201M   0% /run/user/901
+```
+
+**create**
+```
+./run-uri.sh protostuffdb /todo/user/Todo/create payload/create.json
+protostuffdb
+jni rpc: 26 ms | total: 96 ms
+elapsed ms: 47,649 | ops/sec: 209,867 | response body bytes: 80
+
+du -sh target/data/main/user
+164M	target/data/main/user
+```
+
+**get**
+```
+./run-uri.sh protostuffdb /todo/user/Todo/list payload/get.json
+protostuffdb
+jni rpc: 90 ms | total: 220 ms
+elapsed ms: 37,529 | ops/sec: 266,453 | response body bytes: 80
+```
+
+**list**
+```
+./run-uri.sh protostuffdb /todo/user/Todo/list payload/list.json 1000000
+protostuffdb
+jni rpc: 45 ms | total: 177 ms
+elapsed ms: 26,603 | ops/sec: 37,589 | response body bytes: 2,052
+```
+
 ## ovh sg - 1024M (/usr/bin/python missing, install via: apt-get install python)
 `df -h`
 ```
