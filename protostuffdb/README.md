@@ -81,7 +81,7 @@ L = list @ 1M iterations
 
 ## leveldb
 ```
-                             I             G             L
+                               I             G             L
 
 aws ec2 micro   - 990M         119,492       212,111       26,952
 
