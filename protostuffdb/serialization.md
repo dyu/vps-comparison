@@ -286,3 +286,31 @@ protostuffdb
 jni rpc: 23 ms | total: 121 ms
 elapsed ms: 7,017 | ops/sec: 1,425,048 | response body bytes: 25
 ```
+
+## hiformance lax - 2000M (/usr/bin/python missing, install via: apt-get install python)
+```
+./run-uri.sh protostuffdb /todo/user/generateInt /dev/null
+protostuffdb
+jni rpc: 34 ms | total: 145 ms
+elapsed ms: 3,546 | ops/sec: 2,819,537 | response body bytes: 20
+
+./run-uri.sh protostuffdb /todo/user/parseInt payload/echoInt.json
+protostuffdb
+jni rpc: 31 ms | total: 118 ms
+elapsed ms: 8,673 | ops/sec: 1,152,956 | response body bytes: 6
+
+./run-uri.sh protostuffdb /todo/user/echoInt payload/echoInt.json
+protostuffdb
+jni rpc: 33 ms | total: 138 ms
+elapsed ms: 10,342 | ops/sec: 966,843 | response body bytes: 20
+
+./run-uri.sh protostuffdb /todo/user/echoStr payload/echoStr.json
+protostuffdb
+jni rpc: 40 ms | total: 141 ms
+elapsed ms: 10,710 | ops/sec: 933,688 | response body bytes: 25
+
+./run-uri.sh protostuffdb /todo/user/echoKey payload/echoKey.json
+protostuffdb
+jni rpc: 37 ms | total: 152 ms
+elapsed ms: 13,892 | ops/sec: 719,828 | response body bytes: 25
+```
