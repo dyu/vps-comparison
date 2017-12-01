@@ -102,6 +102,8 @@ impactvps ovz   - 1024M        133,686       156,647       23,581
 launchvps lax   - 2000M        196,956       247,433       34,595
 
 serverhand lax  - 2000M        209,867       266,453       37,589
+
+hiformance lax  - 2000M        146,097       154,510       25,383
 ```
 
 ## leveldb with replication log (5M iterations on I)
