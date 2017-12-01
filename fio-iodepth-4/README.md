@@ -44,5 +44,7 @@ impactvps ovz   - 1024M                                           18.8k  70.1k  
 launchvps lax   - 2000M                                           35.7k  27.1k  26.1k  142k   4920/7366
 
 serverhand lax  - 2000M                                           3935   8876   294    2131   105/156
+
+hiformance lax  - 2000M                                           24.9k  21.2k  14.2k  28.6k  
 ```
 
