@@ -16,7 +16,7 @@ cd .. && ln -s tars/fio-bin/fio fio
 
 ```
 SW = sequential write
-SR = sequentail read
+SR = sequential read
 RW = random write
 RR = random read
 MRRW = mixed random read/write
