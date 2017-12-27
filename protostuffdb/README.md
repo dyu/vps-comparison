@@ -65,6 +65,8 @@ launchvps lax     - 2000M        3,051,870     1,703,880      1,623,692
 serverhand lax    - 2000M        3,724,142     1,941,114      1,762,313
 
 hiformance lax    - 2000M        2,819,537     1,152,956      966,843
+
+hosthatch lax     - 992M         2,712,548     1,580,050      1,305,143
 ```
 
 ---
@@ -104,6 +106,8 @@ launchvps lax   - 2000M        196,956       247,433       34,595
 serverhand lax  - 2000M        209,867       266,453       37,589
 
 hiformance lax  - 2000M        146,097       154,510       25,383
+
+hosthatch  lax  - 992M         76,569        158,252       25,604
 ```
 
 ## leveldb with replication log (5M iterations on I)
