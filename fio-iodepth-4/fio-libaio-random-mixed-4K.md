@@ -779,3 +779,74 @@ ls -al test4K-rw-aio
 -rw-r--r-- 1 deploy deploy 4294967296 Dec  2 05:37 test4K-rw-aio
 ```
 
+## hosthatch - 992M (/usr/bin/python missing, install via: apt-get install python)
+`df -h`
+```
+Filesystem      Size  Used Avail Use% Mounted on
+udev            477M     0  477M   0% /dev
+tmpfs           100M  4.4M   95M   5% /run
+/dev/vda1       3.9G  1.9G  1.8G  52% /
+tmpfs           497M     0  497M   0% /dev/shm
+tmpfs           5.0M     0  5.0M   0% /run/lock
+tmpfs           497M     0  497M   0% /sys/fs/cgroup
+tmpfs           100M     0  100M   0% /run/user/1000
+tmpfs           100M     0  100M   0% /run/user/901
+```
+
+*rw*
+```
+./fio --filename=test4K-rw-aio --ioengine=libaio --direct=1 --norandommap --randrepeat=0 --runtime=300 --blocksize=4K --rw=randrw --iodepth=4 --numjobs=1 --group_reporting --name=myjob --size=1G --rwmixread=40
+myjob: (g=0): rw=randrw, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=libaio, iodepth=4
+fio-3.1
+Starting 1 process
+myjob: Laying out IO file (1 file / 1024MiB)
+Jobs: 1 (f=1): [m(1)][42.9%][r=58.3MiB/s,w=89.1MiB/s][r=14.9k,w=22.8k IOPS][eta Jobs: 1 (f=1): [m(1)][57.1%][r=54.2MiB/s,w=80.0MiB/s][r=13.9k,w=20.7k IOPS][eta Jobs: 1 (f=1): [m(1)][71.4%][r=58.2MiB/s,w=86.2MiB/s][r=14.9k,w=22.1k IOPS][eta Jobs: 1 (f=1): [m(1)][85.7%][r=70.5MiB/s,w=106MiB/s][r=18.1k,w=27.1k IOPS][eta 0Jobs: 1 (f=1): [m(1)][100.0%][r=71.4MiB/s,w=107MiB/s][r=18.3k,w=27.3k IOPS][eta 00m:00s]
+myjob: (groupid=0, jobs=1): err= 0: pid=4493: Thu Dec 28 00:16:42 2017
+   read: IOPS=16.4k, BW=64.0MiB/s (67.2MB/s)(409MiB/6385msec)
+    slat (usec): min=2, max=349, avg= 5.26, stdev= 2.66
+    clat (usec): min=24, max=10959, avg=150.28, stdev=251.49
+     lat (usec): min=30, max=10972, avg=155.80, stdev=251.54
+    clat percentiles (usec):
+     |  1.00th=[   69],  5.00th=[   74], 10.00th=[   78], 20.00th=[   83],
+     | 30.00th=[   88], 40.00th=[   93], 50.00th=[   97], 60.00th=[  102],
+     | 70.00th=[  111], 80.00th=[  139], 90.00th=[  251], 95.00th=[  412],
+     | 99.00th=[  742], 99.50th=[ 1057], 99.90th=[ 4178], 99.95th=[ 5080],
+     | 99.99th=[ 6456]
+   bw (  KiB/s): min=52208, max=74952, per=99.15%, avg=65024.67, stdev=8003.63, samples=12
+   iops        : min=13052, max=18738, avg=16256.17, stdev=2000.91, samples=12
+  write: IOPS=24.7k, BW=96.3MiB/s (101MB/s)(615MiB/6385msec)
+    slat (usec): min=2, max=258, avg= 5.92, stdev= 2.62
+    clat (nsec): min=623, max=10425k, avg=50308.17, stdev=218646.58
+     lat (usec): min=25, max=10442, avg=56.50, stdev=218.78
+    clat percentiles (usec):
+     |  1.00th=[   23],  5.00th=[   25], 10.00th=[   26], 20.00th=[   28],
+     | 30.00th=[   30], 40.00th=[   32], 50.00th=[   35], 60.00th=[   38],
+     | 70.00th=[   41], 80.00th=[   45], 90.00th=[   52], 95.00th=[   65],
+     | 99.00th=[   98], 99.50th=[  310], 99.90th=[ 3458], 99.95th=[ 4817],
+     | 99.99th=[ 6980]
+   bw (  KiB/s): min=77832, max=112336, per=99.08%, avg=97741.33, stdev=12199.96, samples=12
+   iops        : min=19458, max=28084, avg=24435.33, stdev=3049.99, samples=12
+  lat (nsec)   : 750=0.01%
+  lat (usec)   : 2=0.01%, 10=0.01%, 20=0.02%, 50=53.01%, 100=29.06%
+  lat (usec)   : 250=13.56%, 500=2.66%, 750=1.04%, 1000=0.19%
+  lat (msec)   : 2=0.10%, 4=0.26%, 10=0.09%, 20=0.01%
+  cpu          : usr=7.83%, sys=32.08%, ctx=161411, majf=0, minf=11
+  IO depths    : 1=0.1%, 2=0.1%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued rwt: total=104683,157461,0, short=0,0,0, dropped=0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=4
+
+Run status group 0 (all jobs):
+   READ: bw=64.0MiB/s (67.2MB/s), 64.0MiB/s-64.0MiB/s (67.2MB/s-67.2MB/s), io=409MiB (429MB), run=6385-6385msec
+  WRITE: bw=96.3MiB/s (101MB/s), 96.3MiB/s-96.3MiB/s (101MB/s-101MB/s), io=615MiB (645MB), run=6385-6385msec
+
+Disk stats (read/write):
+  vda: ios=101891/153151, merge=0/1, ticks=14828/7216, in_queue=22004, util=98.28%
+```
+
+*file-size*
+```
+ls -al test4K-rw-aio 
+-rw-r--r-- 1 deploy deploy 1073741824 Dec 28 00:16 test4K-rw-aio
+```
