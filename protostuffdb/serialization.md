@@ -342,3 +342,31 @@ protostuffdb
 jni rpc: 40 ms | total: 127 ms
 elapsed ms: 8,818 | ops/sec: 1,134,041 | response body bytes: 25
 ```
+
+## hosthatch-storage lax - 992M (/usr/bin/python missing, install via: apt-get install python)
+```
+./run-uri.sh protostuffdb /todo/user/generateInt /dev/null
+protostuffdb
+jni rpc: 90 ms | total: 964 ms
+elapsed ms: 4,078 | ops/sec: 2,452,044 | response body bytes: 20
+
+./run-uri.sh protostuffdb /todo/user/parseInt payload/echoInt.json
+protostuffdb
+jni rpc: 27 ms | total: 115 ms
+elapsed ms: 6,489 | ops/sec: 1,540,957 | response body bytes: 6
+
+./run-uri.sh protostuffdb /todo/user/echoInt payload/echoInt.json
+protostuffdb
+jni rpc: 73 ms | total: 157 ms
+elapsed ms: 7,302 | ops/sec: 1,369,353 | response body bytes: 20
+
+./run-uri.sh protostuffdb /todo/user/echoStr payload/echoStr.json
+protostuffdb
+jni rpc: 24 ms | total: 119 ms
+elapsed ms: 8,620 | ops/sec: 1,159,970 | response body bytes: 25
+
+./run-uri.sh protostuffdb /todo/user/echoKey payload/echoKey.json
+protostuffdb
+jni rpc: 29 ms | total: 116 ms
+elapsed ms: 10,775 | ops/sec: 928,008 | response body bytes: 25
+```
