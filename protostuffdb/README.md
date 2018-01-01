@@ -74,7 +74,7 @@ hosthatch-s lax   - 992M         2,452,044     1,540,957      1,369,353
 All operations below include overhead of parsing/generating json from/to java objects.
 ```
 I = insert @ 10M iterations
-    159MB on disk, inserts 1 primary key and 1 secondary key per iteration
+    159MB on disk, inserts 1 primary key (9 bytes) and 1 secondary key (15 bytes) per iteration
 
 G = get @ 10M iterations
     no disk seeks, same key used per iteration, the sst will be cached by the filesystem
