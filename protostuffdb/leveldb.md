@@ -541,7 +541,7 @@ jni rpc: 28 ms | total: 107 ms
 elapsed ms: 39,589 | ops/sec: 25,259 | response body bytes: 2,052
 ```
 
-## ovh sg - 1024M (/usr/bin/python missing, install via: apt-get install python)
+## ovh sg - 968M (/usr/bin/python missing, install via: apt-get install python)
 `df -h`
 ```
 Filesystem      Size  Used Avail Use% Mounted on
@@ -554,6 +554,30 @@ tmpfs           485M     0  485M   0% /sys/fs/cgroup
 tmpfs            97M     0   97M   0% /run/user/901
 ```
 
+**create**
 ```
-TODO
+./run-uri.sh protostuffdb /todo/user/Todo/create payload/create.json
+protostuffdb
+jni rpc: 32 ms | total: 98 ms
+elapsed ms: 67,032 | ops/sec: 149,180 | response body bytes: 80
+
+du -sh target/data/main/user
+164M	target/data/main/user
 ```
+
+**get**
+```
+./run-uri.sh protostuffdb /todo/user/Todo/list payload/get.json
+protostuffdb
+jni rpc: 66 ms | total: 131 ms
+elapsed ms: 38,433 | ops/sec: 260,188 | response body bytes: 80
+```
+
+**list**
+```
+./run-uri.sh protostuffdb /todo/user/Todo/list payload/list.json 1000000
+protostuffdb
+jni rpc: 22 ms | total: 91 ms
+elapsed ms: 25,773 | ops/sec: 38,800 | response body bytes: 2,052
+```
+
