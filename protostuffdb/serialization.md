@@ -370,3 +370,31 @@ protostuffdb
 jni rpc: 29 ms | total: 116 ms
 elapsed ms: 10,775 | ops/sec: 928,008 | response body bytes: 25
 ```
+
+## ovh sg - 968M (/usr/bin/python missing, install via: apt-get install python)
+```
+./run-uri.sh protostuffdb /todo/user/generateInt /dev/null
+protostuffdb
+jni rpc: 22 ms | total: 89 ms
+elapsed ms: 2,878 | ops/sec: 3,474,082 | response body bytes: 20
+
+./run-uri.sh protostuffdb /todo/user/parseInt payload/echoInt.json
+protostuffdb
+jni rpc: 21 ms | total: 81 ms
+elapsed ms: 4,609 | ops/sec: 2,169,417 | response body bytes: 6
+
+./run-uri.sh protostuffdb /todo/user/echoInt payload/echoInt.json
+protostuffdb
+jni rpc: 20 ms | total: 81 ms
+elapsed ms: 5,111 | ops/sec: 1,956,535 | response body bytes: 20
+
+./run-uri.sh protostuffdb /todo/user/echoStr payload/echoStr.json
+protostuffdb
+jni rpc: 23 ms | total: 89 ms
+elapsed ms: 5,597 | ops/sec: 1,786,479 | response body bytes: 25
+
+./run-uri.sh protostuffdb /todo/user/echoKey payload/echoKey.json
+protostuffdb
+jni rpc: 21 ms | total: 84 ms
+elapsed ms: 6,055 | ops/sec: 1,651,300 | response body bytes: 25
+```
